@@ -246,6 +246,8 @@
     margin-bottom: 24px;
   }
   .icon-badge svg { width: 28px; height: 28px; fill: var(--accent); }
+  .icon-badge.is-image { background: transparent; width: 76px; height: 76px; }
+  .icon-badge.is-image img { width: 76px; height: 76px; object-fit: contain; }
   .card h3 { font-size: 21px; margin-bottom: 12px; }
   .card p { color: var(--muted); font-size: 16px; }
 
@@ -423,7 +425,7 @@
   }
   @media (max-width: 560px) {
     .wrap { padding: 0 22px; }
-    .cards-3, .ft-grid { grid-template-columns: 1fr; }
+    .cards-3, .ft-grid, .steps { grid-template-columns: 1fr; }
     .hero { padding: clamp(56px, 10vh, 90px) 0 clamp(56px, 10vh, 80px); }
     .hero-title { font-size: clamp(33px, 9vw, 44px); }
     .hero-actions { flex-direction: column; }
@@ -489,22 +491,22 @@
     </div>
     <div class="cards-3">
       <div class="card">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M3 5h18v4H3V5zm0 6h18v4H3v-4zm0 6h12v4H3v-4z"/></svg>
+        <div class="icon-badge is-image">
+          <img src="assets/professional-website.png" alt="Professional website icon">
         </div>
         <h3>Professional Website</h3>
         <p>Built with your real business info, logo, and photos. A proper website that represents your business -not a generic template.</p>
       </div>
       <div class="card">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        <div class="icon-badge is-image">
+          <img src="assets/domain-hosting.png" alt="Domain and hosting icon">
         </div>
         <h3>Domain &amp; Hosting</h3>
         <p>Your domain name registered and your site hosted -fully managed. You never have to think about servers or renewals again.</p>
       </div>
       <div class="card">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm21.41-14.66a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        <div class="icon-badge is-image">
+          <img src="assets/monthly-updates.png" alt="Monthly updates icon">
         </div>
         <h3>Monthly Updates</h3>
         <p>Need to update your hours, add a special offer, or change your menu? We make 2-3 small updates per month at no extra cost.</p>
@@ -548,7 +550,7 @@
       <div class="img-ph"><span>image placeholder -4:3</span></div>
       <div>
         <div class="eyebrow">Why SA Sites</div>
-        <h2 class="section-title" style="margin-bottom:34px;">Built for South African Small Businesses</h2>
+        <h2 class="section-title" style="margin-bottom:34px;">Built for South African Businesses</h2>
         <div class="why-list">
           <div class="why-item">
             <span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
