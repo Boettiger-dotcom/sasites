@@ -482,6 +482,12 @@
     .hero-actions .btn { width: 100%; }
     nav.links { padding-left: 22px; padding-right: 22px; }
     .hero.pattern::before { display: none; }
+
+    /* Stack the stats one per row on small phones, with a divider between */
+    .trust-inner { grid-template-columns: 1fr; gap: 0; }
+    .stat { padding: 16px 0; }
+    .stat + .stat { border-top: 1px solid rgba(255,255,255,0.16); }
+    .stat + .stat::before { display: none; }
   }
 </style>
 </head>
