@@ -105,7 +105,7 @@
     font-size: 19px;
     letter-spacing: -0.01em;
   }
-  .logo img { height: 46px; width: auto; display: block; }
+  .logo img { height: 40px; width: auto; display: block; }
   nav.links {
     display: flex;
     align-items: center;
@@ -149,75 +149,9 @@
   .hero {
     background: var(--bg);
     text-align: center;
-    padding: clamp(48px, 8vh, 90px) 0 clamp(64px, 11vh, 120px);
+    padding: clamp(72px, 11vh, 128px) 0 clamp(64px, 11vh, 120px);
     position: relative;
     overflow: hidden;
-  }
-  /* Browser-window mockup wrapping the hero */
-  .browser-mock {
-    position: relative;
-    z-index: 2;
-    max-width: 1080px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 50px 100px -30px rgba(0,18,64,0.45),
-                0 20px 46px -18px rgba(0,18,64,0.28);
-  }
-  .browser-bar {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    background: var(--accent);
-    border-bottom: 1px solid rgba(0,0,0,0.18);
-  }
-  .browser-dots { display: flex; gap: 8px; flex-shrink: 0; }
-  .browser-bar .dot {
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    display: block;
-  }
-  .browser-bar .d1 { background: #ff5f57; }
-  .browser-bar .d2 { background: #febc2e; }
-  .browser-bar .d3 { background: #28c840; }
-  .browser-nav {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-shrink: 0;
-  }
-  .browser-nav svg {
-    width: 18px; height: 18px;
-    fill: none;
-    stroke: rgba(255,255,255,0.9);
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .browser-nav svg.dim { stroke: rgba(255,255,255,0.4); }
-  .browser-url {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    height: 30px;
-    padding: 0 16px;
-    background: #f1f3f4;
-    border-radius: 999px;
-    font-size: 13px;
-    color: #5f6368;
-    letter-spacing: 0.01em;
-  }
-  .browser-url .lock { flex-shrink: 0; opacity: 0.75; }
-  .browser-menu {
-    width: 18px; height: 18px;
-    flex-shrink: 0;
-    fill: rgba(255,255,255,0.9);
-  }
-  .browser-body {
-    padding: clamp(44px, 7vw, 86px) clamp(24px, 5vw, 56px);
   }
   .hero.pattern::before {
     content: "";
@@ -256,12 +190,14 @@
   .trust {
     background: var(--navy);
     color: #fff;
+    margin-top: clamp(56px, 9vw, 120px);
   }
   .trust-inner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    padding: 38px 0;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
   .stat { text-align: center; position: relative; }
   .stat + .stat::before {
@@ -272,9 +208,9 @@
     height: 46px; width: 1px;
     background: rgba(255,255,255,0.16);
   }
-  .stat .num { font-size: clamp(30px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; }
+  .stat .num { font-size: clamp(30px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
   .stat .num span { color: #fff; }
-  .stat .lbl { font-size: 14px; color: #fff; margin-top: 4px; }
+  .stat .lbl { font-size: 14px; color: #fff; margin-top: 1px; }
 
   /* ---------- Section scaffold ---------- */
   section.block { padding: clamp(76px, 10vw, 116px) 0; }
@@ -539,7 +475,7 @@
   @media (max-width: 560px) {
     .wrap { padding: 0 22px; }
     .cards-3, .ft-grid, .steps { grid-template-columns: 1fr; }
-    .hero { padding: clamp(56px, 10vh, 90px) 0 clamp(56px, 10vh, 80px); }
+    .hero { padding: clamp(72px, 12vh, 110px) 0 clamp(56px, 10vh, 80px); }
     .hero-title { font-size: clamp(33px, 9vw, 44px); }
     .hero-actions .bwt { flex-direction: column; width: 100%; }
     .hero-actions .bwt > .bw { width: 100%; }
@@ -574,30 +510,13 @@
 <!-- ============ HERO ============ -->
 <section class="hero pattern" id="top">
   <div class="wrap">
-    <div class="browser-mock">
-      <div class="browser-bar" aria-hidden="true">
-        <div class="browser-dots">
-          <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
-        </div>
-        <div class="browser-nav">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-          <svg class="dim" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/></svg>
-        </div>
-        <div class="browser-url">
-          <svg class="lock" viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm3 8H9V6a3 3 0 0 1 6 0v3z"/></svg>
-          <span>www.yourwebsite.co.za</span>
-        </div>
-        <svg class="browser-menu" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></svg>
-      </div>
-      <div class="browser-body hero-inner">
-        <h1 class="hero-title bw"><span class="bwt">We Build <span class="hl">Websites</span> for SA Businesses</span></h1>
-        <p class="hero-sub bw"><span class="bwt">We build, host, and manage your website for you.</span></p>
-        <div class="hero-actions"><span class="bwt">
-          <span class="bw"><a class="btn btn-primary" href="#contact">Email Us to Get Started</a></span>
-          <span class="bw"><a class="btn btn-outline" href="#services">See What's Included</a></span>
-        </span></div>
-      </div>
+    <div class="hero-inner">
+      <h1 class="hero-title bw"><span class="bwt">We Build <span class="hl">Websites</span> for SA Businesses</span></h1>
+      <p class="hero-sub bw"><span class="bwt">We build, host, and manage your website for you.</span></p>
+      <div class="hero-actions"><span class="bwt">
+        <span class="bw"><a class="btn btn-primary" href="#contact">Email Us to Get Started</a></span>
+        <span class="bw"><a class="btn btn-outline" href="#services">See What's Included</a></span>
+      </span></div>
     </div>
   </div>
 </section>
@@ -772,12 +691,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.body.classList.add('building'); // hide hero elements
 
-    const cursor = document.createElement('div');
-    cursor.className = 'build-cursor';
-    cursor.innerHTML =
-      '<svg viewBox="0 0 24 24" fill="#002366" stroke="#fff" stroke-width="1.4" stroke-linejoin="round">' +
-      '<path d="M5 2.5l13.5 7.8-5.7 1.5-1.6 5.6L5 2.5z"/></svg>';
-    document.body.appendChild(cursor);
+    // Touch devices have no pointer, so skip the fake cursor; the elements
+    // still build in one after another.
+    const noCursor = !!(window.matchMedia &&
+      window.matchMedia('(hover: none), (pointer: coarse)').matches);
+    let cursor = null;
+    if (!noCursor) {
+      cursor = document.createElement('div');
+      cursor.className = 'build-cursor';
+      cursor.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="#002366" stroke="#fff" stroke-width="1.4" stroke-linejoin="round">' +
+        '<path d="M5 2.5l13.5 7.8-5.7 1.5-1.6 5.6L5 2.5z"/></svg>';
+      document.body.appendChild(cursor);
+    }
 
     // viewport coordinates, since the cursor is position:fixed
     const rectOf = (el) => {
@@ -789,7 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // safety net: never leave anything hidden
     const safety = setTimeout(() => {
       heroEls.forEach(e => e.classList.add('built'));
-      cursor.remove();
+      if (cursor) cursor.remove();
     }, 7000);
 
     const bounce = (el, cls) => {
@@ -802,17 +728,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const finish = () => {
       clearTimeout(safety);
-      cursor.classList.add('done');
-      setTimeout(() => { cursor.remove(); }, 450);
+      if (cursor) {
+        cursor.classList.add('done');
+        setTimeout(() => { cursor.remove(); }, 450);
+      }
 
-      // Celebrate: bounce each stat bar in turn, then the primary CTA.
-      const stats = Array.from(document.querySelectorAll('.trust .stat'));
+      // Nudge the primary CTA once the hero finishes building. The stat bars
+      // pop separately, when the trust bar scrolls into view (see statPop).
       const cta = document.querySelector('.hero-actions .btn-primary');
-      const START = 300, STAGGER = 130;
-      stats.forEach((stat, i) => setTimeout(() => bounce(stat, 'pop-soft'), START + i * STAGGER));
-      // fire the CTA a touch after the last stat pops, for a clear beat
-      const lastStatStart = START + Math.max(0, stats.length - 1) * STAGGER;
-      setTimeout(() => bounce(cta, 'nudge-soft'), lastStatStart + 480);
+      setTimeout(() => bounce(cta, 'nudge-soft'), 360);
     };
 
     const step = (i) => {
@@ -825,20 +749,24 @@ document.addEventListener('DOMContentLoaded', () => {
       if (i === 0) {
         // Heading: cursor and title appear together at the left, then both
         // travel right in sync, so the cursor looks like it drags the title in.
-        cursor.style.transition = 'none';
-        cursor.style.transform = 'translate(' + (r.x - 30) + 'px,' + cy + 'px)';
-        void cursor.offsetWidth;
-        cursor.style.transition = '';
+        if (cursor) {
+          cursor.style.transition = 'none';
+          cursor.style.transform = 'translate(' + (r.x - 30) + 'px,' + cy + 'px)';
+          void cursor.offsetWidth;
+          cursor.style.transition = '';
+        }
         requestAnimationFrame(() => {
-          cursor.classList.add('show');          // cursor fades in...
-          cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+          if (cursor) {
+            cursor.classList.add('show');        // cursor fades in...
+            cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+          }
           el.classList.add('built');             // ...as the title slides in
         });
         setTimeout(() => step(i + 1), 560);
         return;
       }
 
-      cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+      if (cursor) cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
       setTimeout(() => {
         el.classList.add('built'); // render the real element
         setTimeout(() => step(i + 1), 150);
@@ -846,6 +774,31 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     setTimeout(() => step(0), 300);
+  })();
+
+  /* ── Stat-bar celebration ──
+     Pop the stat bars in turn when the trust bar scrolls into view, so the
+     payoff is actually seen (on mobile the bar sits below the fold). Fires
+     just after the fade-up settles to avoid clashing with its transform. */
+  (function statPop() {
+    const stats = Array.from(document.querySelectorAll('.trust .stat'));
+    if (!stats.length || !('IntersectionObserver' in window)) return;
+    const reduce = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        obs.disconnect();
+        stats.forEach((stat, i) => setTimeout(() => {
+          stat.classList.remove('pop-soft');
+          void stat.offsetWidth; // restart the animation
+          stat.classList.add('pop-soft');
+        }, 450 + i * 130));
+      });
+    }, { threshold: 0.5 });
+    io.observe(stats[0]);
   })();
 
   /* ── Scroll fade-up ── */
