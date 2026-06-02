@@ -192,6 +192,54 @@
     margin-top: 40px;
     flex-wrap: wrap;
   }
+  /* Decorative browser mockup in hero */
+  .hero-mock {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 32px auto 0;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: 0 32px 64px -28px rgba(0,18,64,0.30);
+    overflow: hidden;
+    text-align: left;
+  }
+  .hero-mock .bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 16px;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-mock .bar i { width: 11px; height: 11px; border-radius: 50%; background: #cbd0d8; }
+  .hero-mock .bar .url { margin-left: 10px; height: 22px; flex: 1; max-width: 340px; border-radius: 6px; background: #fff; border: 1px solid var(--border); }
+  .hero-mock .screen { padding: 20px 28px 24px; }
+  .hero-mock .m-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+  .hero-mock .m-nav .brand { width: 74px; height: 16px; border-radius: 5px; background: var(--navy); }
+  .hero-mock .m-nav .menu { display: flex; gap: 14px; align-items: center; }
+  .hero-mock .m-nav .menu span { width: 42px; height: 8px; border-radius: 4px; background: #d7dbe2; }
+  .hero-mock .m-nav .menu .pill { width: 72px; height: 26px; border-radius: 6px; background: var(--navy); }
+  .hero-mock .m-hero { text-align: center; margin-bottom: 22px; }
+  .hero-mock .m-hero .h { height: 17px; border-radius: 6px; background: var(--navy); margin: 0 auto 9px; }
+  .hero-mock .m-hero .h.w1 { width: 60%; }
+  .hero-mock .m-hero .h.w2 { width: 46%; }
+  .hero-mock .m-hero .t { height: 9px; border-radius: 4px; background: #dfe3e9; margin: 0 auto 8px; }
+  .hero-mock .m-hero .t.w1 { width: 54%; }
+  .hero-mock .m-hero .t.w2 { width: 40%; }
+  .hero-mock .m-hero .play { width: 116px; height: 28px; border-radius: 6px; background: var(--navy); margin: 14px auto 0; }
+  .hero-mock .m-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hero-mock .m-cards .c { border: 1px solid var(--border); border-radius: 8px; padding: 13px; }
+  .hero-mock .m-cards .c .ic { width: 26px; height: 26px; border-radius: 7px; background: var(--navy); margin-bottom: 10px; }
+  .hero-mock .m-cards .c .l { height: 8px; border-radius: 4px; background: #dfe3e9; margin-bottom: 7px; }
+  .hero-mock .m-cards .c .l.s { width: 68%; }
+  @media (max-width: 560px) {
+    .hero-mock { margin-top: 44px; }
+    .hero-mock .screen { padding: 18px 18px 22px; }
+    .hero-mock .m-nav .menu span { display: none; }
+    .hero-mock .m-cards { grid-template-columns: 1fr; gap: 12px; }
+  }
 
   /* ---------- Trust bar ---------- */
   .trust {
@@ -467,10 +515,30 @@
   <div class="wrap hero-inner">
     <div class="eyebrow">South African Web Design</div>
     <h1 class="hero-title"><span>Professional Websites</span> for South African Businesses.</h1>
-    <p class="hero-sub">We build, host, and manage your website so you can focus on running your business.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#contact">Email Us to Get Started</a>
       <a class="btn btn-outline" href="#services">See What's Included</a>
+    </div>
+    <div class="hero-mock" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i><span class="url"></span></div>
+      <div class="screen">
+        <div class="m-nav">
+          <div class="brand"></div>
+          <div class="menu"><span></span><span></span><span></span><span class="pill"></span></div>
+        </div>
+        <div class="m-hero">
+          <div class="h w1"></div>
+          <div class="h w2"></div>
+          <div class="t w1"></div>
+          <div class="t w2"></div>
+          <div class="play"></div>
+        </div>
+        <div class="m-cards">
+          <div class="c"><div class="ic"></div><div class="l"></div><div class="l s"></div></div>
+          <div class="c"><div class="ic"></div><div class="l"></div><div class="l s"></div></div>
+          <div class="c"><div class="ic"></div><div class="l"></div><div class="l s"></div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
