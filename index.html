@@ -360,17 +360,19 @@
   }
 
   /* ---------- Animations ---------- */
-  /* Attention bounce, used for the stat bars and the primary CTA after the
-     build finishes */
-  @keyframes ctaBounce {
-    0%, 100% { transform: translateY(0); }
-    28%      { transform: translateY(-13px); }
-    48%      { transform: translateY(0); }
-    66%      { transform: translateY(-6px); }
-    82%      { transform: translateY(0); }
+  /* Subtle attention cues after the build finishes: a soft scale pop on the
+     stats and a single gentle nudge on the primary CTA. */
+  @keyframes softPop {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
   }
-  .bounce-once { animation: ctaBounce .9s ease; }
-  .bounce-quick { animation: ctaBounce .55s ease; }
+  @keyframes softNudge {
+    0%, 100% { transform: translateY(0); }
+    45%      { transform: translateY(-7px); }
+  }
+  .pop-soft   { animation: softPop .42s ease; }
+  .nudge-soft { animation: softNudge .5s ease; }
 
   /* "Being built": a cursor visits the logo, then each hero element top to
      bottom, and renders each one in as it arrives. Driven by JS, which adds
@@ -694,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bounce = (el, cls) => {
       if (!el) return;
-      cls = cls || 'bounce-once';
+      cls = cls || 'pop-soft';
       el.classList.remove(cls);
       void el.offsetWidth; // restart the animation if re-applied
       el.classList.add(cls);
@@ -708,12 +710,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Celebrate: bounce each stat bar in turn, then the primary CTA.
       const stats = Array.from(document.querySelectorAll('.trust .stat'));
       const cta = document.querySelector('.hero-actions .btn-primary');
-      const START = 300, STAGGER = 160;
-      stats.forEach((stat, i) => setTimeout(() => bounce(stat, 'bounce-quick'), START + i * STAGGER));
-      // fire the CTA just after the last stat hits its bounce peak, not after
-      // its full settle, so it follows on without a gap
+      const START = 300, STAGGER = 130;
+      stats.forEach((stat, i) => setTimeout(() => bounce(stat, 'pop-soft'), START + i * STAGGER));
+      // fire the CTA a touch after the last stat pops, for a clear beat
       const lastStatStart = START + Math.max(0, stats.length - 1) * STAGGER;
-      setTimeout(() => bounce(cta), lastStatStart + 220);
+      setTimeout(() => bounce(cta, 'nudge-soft'), lastStatStart + 480);
     };
 
     const step = (i) => {
