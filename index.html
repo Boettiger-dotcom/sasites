@@ -102,6 +102,7 @@
     font-size: 19px;
     letter-spacing: -0.01em;
   }
+  .logo img { height: 72px; width: auto; display: block; }
   .logo-mark {
     width: 30px; height: 30px;
     border-radius: 7px;
@@ -347,8 +348,12 @@
     padding-bottom: 56px;
   }
   footer.ft .logo { color: #fff; margin-bottom: 18px; }
-  footer.ft .logo-mark { background: #fff; }
-  footer.ft .logo-mark::after { background: var(--accent); }
+  footer.ft .logo img {
+    height: auto; width: 150px;
+    background: #fff;
+    padding: 14px;
+    border-radius: 12px;
+  }
   .ft-desc { font-size: 15px; max-width: 340px; line-height: 1.7; }
   .ft-col h4 { color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; font-weight: 600; }
   .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
@@ -440,8 +445,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="logo" href="#top">
-      <span class="logo-mark"></span>
-      <span>SA Sites</span>
+      <img src="assets/logo.png" alt="SA Sites - Web Design Services">
     </a>
     <nav class="links" id="navLinks">
       <a href="#top">Home</a>
@@ -589,7 +593,7 @@
   <div class="wrap">
     <div class="ft-grid">
       <div>
-        <a class="logo" href="#top"><span class="logo-mark"></span><span>SA Sites</span></a>
+        <a class="logo" href="#top"><img src="assets/logo.png" alt="SA Sites - Web Design Services"></a>
         <p class="ft-desc">Affordable, fully managed websites for South African small businesses. We handle everything so you can focus on what you do best.</p>
       </div>
       <div class="ft-col">
