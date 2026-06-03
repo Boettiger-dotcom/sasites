@@ -576,22 +576,10 @@
      custom look rather than browser markers. */
   ol.steps, ul.why-list { list-style: none; }
 
-  /* ---------- Work shot (real site we built) ---------- */
-  .work-shot { margin: 0; }
-  .work-shot img {
-    width: 100%;
-    aspect-ratio: 4 / 3.4;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    display: block;
-  }
-  section.block .work-shot figcaption {
-    margin-top: 12px;
-    font-size: 14px;
-    color: var(--muted);
-    text-align: center;
+  /* Why-Us benefits stacked one under another, centered (no image) */
+  .why-list-grid {
+    max-width: 620px;
+    margin: 0 auto;
   }
 
   /* ---------- About ---------- */
@@ -869,15 +857,11 @@
 <!-- ============ WHY US ============ -->
 <section class="block" id="why-us">
   <div class="wrap">
-    <div class="why-grid">
-      <figure class="work-shot">
-        <img src="assets/work-waterkloof-dog-daycare.png" alt="Waterkloof Ridge Dog Daycare website built by SA Sites for a South African small business" loading="lazy">
-        <figcaption>A live site we built: Waterkloof Ridge Dog Daycare</figcaption>
-      </figure>
-      <div>
-        <div class="eyebrow">Why SA Sites</div>
-        <h2 class="section-title" style="margin-bottom:34px;">Built for South African Businesses</h2>
-        <ul class="why-list">
+    <div class="head-center">
+      <div class="eyebrow">Why SA Sites</div>
+      <h2 class="section-title">Built for South African Businesses</h2>
+    </div>
+    <ul class="why-list why-list-grid">
           <li class="why-item">
             <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
             <div><h3>No tech knowledge needed</h3><p>We handle everything: hosting, domain, updates. You just run your business.</p></div>
@@ -894,9 +878,7 @@
             <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
             <div><h3>Ongoing support every month</h3><p>2-3 updates included every month so your site always reflects your business accurately.</p></div>
           </li>
-        </ul>
-      </div>
-    </div>
+    </ul>
   </div>
 </section>
 
@@ -1132,7 +1114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Scroll fade-up ── */
   const animEls = document.querySelectorAll(
-    '.trust .stat, .card, .step, .img-ph, .work-shot, .why-item, ' +
+    '.trust .stat, .card, .step, .why-item, ' +
     '.head-center, .cta h2, .cta p, .cta .btn-primary, .ft-grid > div'
   );
 
