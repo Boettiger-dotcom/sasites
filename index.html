@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SA Sites - Affordable Websites for South African Small Businesses</title>
-<meta name="description" content="SA Sites builds, hosts, and manages professional websites for South African small businesses. R499 to get online and R49/month covers hosting, domain, and updates." />
+<meta name="description" content="Affordable managed websites for South African small businesses. R499 to get online, then R49/month for hosting, domain and updates." />
+<link rel="canonical" href="https://sasites.co.za/" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SA Sites" />
+<meta property="og:title" content="SA Sites - Affordable Websites for South African Small Businesses" />
+<meta property="og:description" content="Affordable managed websites for South African small businesses. R499 to get online, then R49/month for hosting, domain and updates." />
+<meta property="og:url" content="https://sasites.co.za/" />
+<meta property="og:locale" content="en_ZA" />
+<meta property="og:image" content="https://sasites.co.za/assets/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SA Sites - Affordable Websites for South African Small Businesses" />
+<meta name="twitter:description" content="Affordable managed websites for South African small businesses. R499 to get online, then R49/month for hosting, domain and updates." />
+<meta name="twitter:image" content="https://sasites.co.za/assets/logo.png" />
+
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/favicon.png" />
@@ -555,7 +571,188 @@
   section.block .check svg { fill: #FDFCFA; }
   section.block .img-ph { background-color: #F3F4F6; border-color: var(--border); }
   section.block .img-ph span { background: #FDFCFA; color: var(--muted); border-color: var(--border); }
+
+  /* Lists made semantic (How It Works = <ol>, Why Us = <ul>) keep their
+     custom look rather than browser markers. */
+  ol.steps, ul.why-list { list-style: none; }
+
+  /* ---------- Work shot (real site we built) ---------- */
+  .work-shot { margin: 0; }
+  .work-shot img {
+    width: 100%;
+    aspect-ratio: 4 / 3.4;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    display: block;
+  }
+  section.block .work-shot figcaption {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-body p { color: var(--muted); font-size: 17px; }
+  .about-body p + p { margin-top: 18px; }
+  section.block .about-body a { color: var(--navy); font-weight: 600; text-decoration: underline; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-item {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-item h3 { font-size: 19px; margin-bottom: 10px; }
+  section.block .faq-item h3 { color: #242A31; }
+  .faq-item p { color: var(--muted); font-size: 16.5px; }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
 </style>
+
+<!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://sasites.co.za/#organization",
+      "name": "SA Sites",
+      "url": "https://sasites.co.za/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sasites.co.za/assets/logo.png"
+      },
+      "image": "https://sasites.co.za/assets/logo.png",
+      "description": "SA Sites builds, hosts, and manages affordable websites for South African small businesses for R499 to get online and R49 per month.",
+      "email": "tristan@sasites.co.za",
+      "founder": {
+        "@type": "Person",
+        "name": "Tristan",
+        "jobTitle": "Founder",
+        "worksFor": { "@id": "https://sasites.co.za/#organization" }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Website build and setup",
+          "description": "A professional website built with your real business info, logo, and photos, plus domain and hosting setup.",
+          "price": "499",
+          "priceCurrency": "ZAR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Hosting, domain and monthly updates",
+          "description": "Managed hosting, your domain name, and 2-3 small content updates each month.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "49",
+            "priceCurrency": "ZAR",
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sasites.co.za/#website",
+      "url": "https://sasites.co.za/",
+      "name": "SA Sites",
+      "inLanguage": "en-ZA",
+      "publisher": { "@id": "https://sasites.co.za/#organization" }
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to get your South African business online with SA Sites",
+      "description": "Get a professional, fully managed website for your South African small business in three simple steps.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Send us your info",
+          "text": "Share your business details, logo, and any photos. We build your professional website from there."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Review and approve",
+          "text": "We show you the finished site. Request any changes and give the go-ahead when you're happy."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Pay and go live",
+          "text": "Pay the R499 setup fee and your site goes live. R49 per month keeps everything running smoothly."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://sasites.co.za/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a website from SA Sites cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A website from SA Sites costs R499 once-off to build and set up, then R49 per month, which covers hosting, your domain name, and 2-3 small updates each month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in the R49 monthly fee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The R49 monthly fee covers managed hosting, your domain name registration and renewal, and 2-3 small content updates each month, such as changing your hours, prices, or photos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to get my website live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most sites go live within a few days. Once you send your business details, logo, and any photos, we build the site, you review and approve it, and then it goes live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need any technical knowledge to have a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SA Sites handles everything for you, including hosting, your domain, and all updates. You just run your business and email us when you need a change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of businesses do you build websites for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We build websites for any local South African small business, including barbers, salons, restaurants, mechanics, doctors, and guesthouses."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -563,13 +760,14 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="logo" href="#top">
-      <img src="assets/logo.png" alt="SA Sites - Web Design Services">
+      <img src="assets/logo.png" alt="SA Sites logo - affordable websites for South African small businesses">
     </a>
-    <nav class="links" id="navLinks">
+    <nav class="links" id="navLinks" aria-label="Primary">
       <a href="#top">Home</a>
       <a href="#services">Services</a>
       <a href="#how-it-works">How It Works</a>
       <a href="#why-us">Why Us</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
       <a class="btn btn-primary mobile-cta" href="#contact">Get In Touch</a>
     </nav>
@@ -579,6 +777,8 @@
     </button>
   </div>
 </header>
+
+<main>
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
@@ -615,21 +815,21 @@
     <div class="cards-3">
       <div class="card">
         <div class="icon-badge is-image">
-          <img src="assets/professional-website.png" alt="Professional website icon">
+          <img src="assets/professional-website.png" alt="Professional small business website built by SA Sites">
         </div>
         <h3>Professional Website</h3>
         <p>Built with your real business info, logo, and photos. A proper website that represents your business, not a generic template.</p>
       </div>
       <div class="card">
         <div class="icon-badge is-image">
-          <img src="assets/domain-hosting.png" alt="Domain and hosting icon">
+          <img src="assets/domain-hosting.png" alt="Domain registration and website hosting managed by SA Sites">
         </div>
         <h3>Domain &amp; Hosting</h3>
         <p>Your domain name registered and your site hosted, fully managed. You never have to think about servers or renewals again.</p>
       </div>
       <div class="card">
         <div class="icon-badge is-image">
-          <img src="assets/monthly-updates.png" alt="Monthly updates icon">
+          <img src="assets/monthly-updates.png" alt="Monthly website content updates included with SA Sites">
         </div>
         <h3>Monthly Updates</h3>
         <p>Need to update your hours, add a special offer, or change your menu? We make 2-3 small updates per month at no extra cost.</p>
@@ -646,23 +846,23 @@
       <h2 class="section-title">How It Works</h2>
       <p class="section-lead">Getting your business online is simple. We handle all the hard parts, you just review and approve.</p>
     </div>
-    <div class="steps">
-      <div class="step">
+    <ol class="steps">
+      <li class="step">
         <div class="num">1</div>
         <h3>Send Us Your Info</h3>
         <p>Share your business details, logo, and any photos. We build your professional website from there.</p>
-      </div>
-      <div class="step">
+      </li>
+      <li class="step">
         <div class="num">2</div>
         <h3>Review &amp; Approve</h3>
         <p>We show you the finished site. Request any changes and give the go-ahead when you're happy.</p>
-      </div>
-      <div class="step">
+      </li>
+      <li class="step">
         <div class="num">3</div>
         <h3>Pay &amp; Go Live</h3>
         <p>Pay the R499 setup fee and your site goes live. R49/month keeps everything running smoothly.</p>
-      </div>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -670,33 +870,85 @@
 <section class="block" id="why-us">
   <div class="wrap">
     <div class="why-grid">
-      <div class="img-ph"><span>image placeholder -4:3</span></div>
+      <figure class="work-shot">
+        <img src="assets/work-waterkloof-dog-daycare.png" alt="Waterkloof Ridge Dog Daycare website built by SA Sites for a South African small business" loading="lazy">
+        <figcaption>A live site we built: Waterkloof Ridge Dog Daycare</figcaption>
+      </figure>
       <div>
         <div class="eyebrow">Why SA Sites</div>
         <h2 class="section-title" style="margin-bottom:34px;">Built for South African Businesses</h2>
-        <div class="why-list">
-          <div class="why-item">
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
+        <ul class="why-list">
+          <li class="why-item">
+            <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
             <div><h3>No tech knowledge needed</h3><p>We handle everything: hosting, domain, updates. You just run your business.</p></div>
-          </div>
-          <div class="why-item">
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
+          </li>
+          <li class="why-item">
+            <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
             <div><h3>Priced for local small businesses</h3><p>R499 to get online and R49/month to stay there. No hidden costs, no surprises.</p></div>
-          </div>
-          <div class="why-item">
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
+          </li>
+          <li class="why-item">
+            <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
             <div><h3>Built for any local business</h3><p>Barbers, salons, restaurants, mechanics, doctors, guesthouses, we've got you covered.</p></div>
-          </div>
-          <div class="why-item">
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
+          </li>
+          <li class="why-item">
+            <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
             <div><h3>Ongoing support every month</h3><p>2-3 updates included every month so your site always reflects your business accurately.</p></div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
+
+<!-- ============ ABOUT / E-E-A-T ============ -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">Who's Behind SA Sites</h2>
+      </div>
+      <div class="about-body">
+        <p>SA Sites is an independent web studio run by Tristan, built to get South African small businesses online without the usual cost or hassle. Instead of charging thousands for a website and leaving you to manage it, we build, host, and maintain your site for a flat R499 setup and R49 a month.</p>
+        <p>Every site is built by hand around your real business details, and we handle the technical side, hosting, domains, and updates, so you never have to. Questions about your site go straight to a real person: <a href="mailto:tristan@sasites.co.za">tristan@sasites.co.za</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block alt" id="faq">
+  <div class="wrap">
+    <div class="head-center">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-lead">Common questions about getting your South African small business online with SA Sites.</p>
+    </div>
+    <div class="faq-list">
+      <article class="faq-item">
+        <h3>How much does a website from SA Sites cost?</h3>
+        <p>A website from SA Sites costs R499 once-off to build and set up, then R49 per month, which covers hosting, your domain name, and 2-3 small updates each month.</p>
+      </article>
+      <article class="faq-item">
+        <h3>What is included in the R49 monthly fee?</h3>
+        <p>The R49 monthly fee covers managed hosting, your domain name registration and renewal, and 2-3 small content updates each month, such as changing your hours, prices, or photos.</p>
+      </article>
+      <article class="faq-item">
+        <h3>How long does it take to get my website live?</h3>
+        <p>Most sites go live within a few days. Once you send your business details, logo, and any photos, we build the site, you review and approve it, and then it goes live.</p>
+      </article>
+      <article class="faq-item">
+        <h3>Do I need any technical knowledge to have a website?</h3>
+        <p>No. SA Sites handles everything for you, including hosting, your domain, and all updates. You just run your business and email us when you need a change.</p>
+      </article>
+      <article class="faq-item">
+        <h3>What types of businesses do you build websites for?</h3>
+        <p>We build websites for any local South African small business, including barbers, salons, restaurants, mechanics, doctors, and guesthouses.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
 <!-- ============ CTA BANNER ============ -->
 <section class="cta" id="contact">
@@ -707,12 +959,14 @@
   </div>
 </section>
 
+</main>
+
 <!-- ============ FOOTER ============ -->
 <footer class="ft">
   <div class="wrap">
     <div class="ft-grid">
       <div>
-        <a class="logo" href="#top"><img src="assets/logo.png" alt="SA Sites - Web Design Services"></a>
+        <a class="logo" href="#top"><img src="assets/logo.png" alt="SA Sites logo - affordable websites for South African small businesses"></a>
         <p class="ft-desc">Affordable, fully managed websites for South African small businesses. We handle everything so you can focus on what you do best.</p>
       </div>
       <div class="ft-col">
@@ -722,6 +976,8 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -876,7 +1132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Scroll fade-up ── */
   const animEls = document.querySelectorAll(
-    '.trust .stat, .card, .step, .img-ph, .why-item, ' +
+    '.trust .stat, .card, .step, .img-ph, .work-shot, .why-item, ' +
     '.head-center, .cta h2, .cta p, .cta .btn-primary, .ft-grid > div'
   );
 
