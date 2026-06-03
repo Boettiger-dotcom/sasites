@@ -608,6 +608,44 @@
   @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; gap: 24px; }
   }
+
+  /* ---------- Contact form ---------- */
+  .contact-form { max-width: 620px; margin: 38px auto 0; text-align: left; }
+  .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cf-field { display: block; margin-bottom: 16px; }
+  .cf-field > span { display: block; font-size: 14px; font-weight: 600; color: #FDFCFA; margin-bottom: 7px; }
+  .cf-field > span em { font-style: normal; font-weight: 400; color: rgba(255,255,255,0.6); }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    color: #242A31;
+    background: #FDFCFA;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 13px 15px;
+    outline: none;
+  }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #9DB8FF;
+    box-shadow: 0 0 0 3px rgba(157,184,255,0.45);
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: #9CA3AF; }
+  .hp { position: absolute !important; left: -9999px !important; }
+  .cf-submit { display: block; width: fit-content; margin: 40px auto 0; padding-left: 44px; padding-right: 44px; }
+  .cf-submit:disabled { opacity: 0.6; cursor: default; }
+  .cf-status { margin: 14px 0 0; font-size: 15px; min-height: 1.2em; text-align: center; }
+  .cf-status.ok { color: #B7F7C8; }
+  .cf-status.err { color: #FFC2C2; }
+  .cf-alt { margin-top: 22px; font-size: 15px; color: rgba(255,255,255,0.72); text-align: center; }
+  .cf-alt a { color: #FDFCFA; text-decoration: underline; }
+  @media (max-width: 560px) {
+    .cf-row { grid-template-columns: 1fr; gap: 0; }
+  }
 </style>
 
 <!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
@@ -775,7 +813,7 @@
       <h1 class="hero-title bw"><span class="bwt">We Build <span class="hl">Websites</span> for SA Businesses</span></h1>
       <p class="hero-sub bw"><span class="bwt">We build, host, and manage your website for you.</span></p>
       <div class="hero-actions"><span class="bwt">
-        <span class="bw"><a class="btn btn-primary" href="mailto:tristan@sasites.co.za">Email Us to Get Started</a></span>
+        <span class="bw"><a class="btn btn-primary" href="#contact">Contact Us</a></span>
         <span class="bw"><a class="btn btn-outline" href="#services">See What's Included</a></span>
       </span></div>
     </div>
@@ -936,8 +974,40 @@
 <section class="cta" id="contact">
   <div class="wrap">
     <h2>Ready to Get Your Business Online?</h2>
-    <p>Email us and we'll have your site live within days. R499 to start, that's it.</p>
-    <a class="btn btn-primary" href="mailto:tristan@sasites.co.za">Email Us to Get Started</a>
+    <p>Send us a few details and we'll be in touch shortly.</p>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="35b0e86a-c88d-4fe1-8e7f-da5feaaf9550">
+      <input type="hidden" name="subject" value="New enquiry from the SA Sites website">
+      <input type="hidden" name="from_name" value="SA Sites Website">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cf-row">
+        <label class="cf-field">
+          <span>Your name</span>
+          <input type="text" name="name" required autocomplete="name" placeholder="Jane Dlamini">
+        </label>
+        <label class="cf-field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="you@email.com">
+        </label>
+      </div>
+      <div class="cf-row">
+        <label class="cf-field">
+          <span>Business name</span>
+          <input type="text" name="business" autocomplete="organization" placeholder="Your business">
+        </label>
+        <label class="cf-field">
+          <span>Phone <em>(optional)</em></span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="071 234 5678">
+        </label>
+      </div>
+      <label class="cf-field">
+        <span>What do you need?</span>
+        <textarea name="message" rows="4" required placeholder="Tell us a bit about your business and what you'd like."></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary cf-submit">Send Enquiry</button>
+      <p class="cf-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="cf-alt">Prefer email? <a href="mailto:tristan@sasites.co.za">tristan@sasites.co.za</a></p>
   </div>
 </section>
 
@@ -1158,6 +1228,44 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, 2500));
   }
+
+  /* ── Contact form (Web3Forms, AJAX so visitors stay on the page) ── */
+  (function contactForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+    const status = form.querySelector('.cf-status');
+    const btn = form.querySelector('.cf-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = 'cf-status';
+      status.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          status.textContent = "Thanks! We've got your message and will be in touch soon.";
+          status.classList.add('ok');
+          form.reset();
+        } else {
+          status.textContent = (data && data.message) ||
+            'Something went wrong. Please email us at tristan@sasites.co.za.';
+          status.classList.add('err');
+        }
+      } catch (err) {
+        status.textContent = 'Network error. Please email us at tristan@sasites.co.za.';
+        status.classList.add('err');
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  })();
 });
 </script>
 </body>
