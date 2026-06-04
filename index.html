@@ -38,6 +38,7 @@
     --radius: 8px;
     --font: "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
     --maxw: 1180px;
+    --scoop: 56px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,6 +60,7 @@
     position: fixed;
     inset: 0;
     z-index: -1;
+    /* Blue page base so the white nav bar's rounded corners curve into blue */
     background: linear-gradient(105deg, #001240 0%, #002366 55%, #00396e 100%);
   }
 
@@ -111,13 +113,25 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(255,255,255,0.88);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    /* Header stays light, so restore the original palette inside it */
+    /* White bar: square bottom-left, rounded bottom-right corner */
+    background: #FDFCFA;
+    border-bottom: none;
+    border-bottom-right-radius: var(--scoop);
+    /* Dark text/icons on the white bar */
     --text: #242A31;
     --muted: #6B7280;
     --border: #E4E6EA;
+  }
+  /* Left end flows down: a white quarter-circle drops below the straight edge
+     at the bottom-left, curving down into the blue below. */
+  header.nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: calc(var(--scoop) * -1);
+    width: var(--scoop);
+    height: var(--scoop);
+    background: radial-gradient(circle var(--scoop) at bottom right, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
   }
   .nav-inner {
     display: flex;
@@ -173,13 +187,31 @@
   .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
   .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  /* White backdrop so the hero's rounded top corners read as white cut-outs */
+  main { background: #FDFCFA; }
+
   /* ---------- Hero ---------- */
   .hero {
-    background: transparent;
+    background: linear-gradient(105deg, #001240 0%, #002366 55%, #00396e 100%);
     text-align: center;
     padding: clamp(110px, 18vh, 200px) 0 clamp(110px, 18vh, 200px);
     position: relative;
-    overflow: hidden;
+    z-index: 2;
+    /* Straight horizontal bottom edge. The LEFT corner curves up: the rounded
+       bottom-left reveals the white section below, so the line rises at the
+       left edge then runs straight across. */
+    border-bottom-left-radius: 64px;
+  }
+  /* The RIGHT end curves down: a blue quarter-circle drops below the straight
+     edge at the right corner so the line bends down into the white below. */
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -64px;
+    width: 64px;
+    height: 64px;
+    background: radial-gradient(circle 64px at bottom left, transparent 63px, #00396e 64px);
   }
   .hero.pattern::before {
     content: "";
@@ -370,15 +402,48 @@
     background: #00396e;
     color: #FDFCFA;
     text-align: center;
-    padding: clamp(76px, 10vw, 112px) 0;
+    position: relative;
+    z-index: 1;
+    /* Rise behind the FAQ above (its bottom draws the CTA's top edge). */
+    margin-top: calc(var(--scoop) * -1);
+    padding: calc(clamp(76px, 10vw, 112px) + var(--scoop)) 0 clamp(76px, 10vw, 112px);
+    /* Bottom edge: each corner points up, revealing the darker footer behind. */
+    border-bottom-left-radius: var(--scoop);
+    border-bottom-right-radius: var(--scoop);
   }
+  /* Top edge of the CTA below (drawn on the FAQ's bottom): right corner curves
+     up (reveals the dark CTA), left corner flows down -- mirrors the nav bar. */
+  #faq {
+    position: relative;
+    z-index: 2;
+    border-bottom-right-radius: var(--scoop);
+  }
+  #faq::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: calc(var(--scoop) * -1);
+    width: var(--scoop);
+    height: var(--scoop);
+    background: radial-gradient(circle var(--scoop) at bottom right, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
+  }
+  /* Blue hero curves down into the first light section below it */
+  #services { position: relative; z-index: 1; }
   .cta h2 { font-size: clamp(32px, 4.5vw, 50px); }
   .cta p { color: rgba(255,255,255,0.72); font-size: 19px; margin: 20px auto 38px; max-width: 520px; }
   .cta .btn-primary { padding: 17px 40px; font-size: 17px; background: #FDFCFA; color: var(--navy); }
   .cta .btn-primary:hover { background: #e9eefb; filter: none; }
 
   /* ---------- Footer ---------- */
-  footer.ft { background: #002366; color: rgba(255,255,255,0.72); padding: 72px 0 0; }
+  footer.ft {
+    background: #002366;
+    color: rgba(255,255,255,0.72);
+    /* Extra top padding clears the scoop so the content sits below the line. */
+    padding: calc(96px + var(--scoop)) 0 0;
+    position: relative;
+    /* Rise up behind the CTA's rounded bottom so each corner points up. */
+    margin-top: calc(var(--scoop) * -1);
+  }
   .ft-grid {
     display: grid;
     grid-template-columns: 1.6fr 1fr 1.2fr;
@@ -518,7 +583,8 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.06);
     }
     nav.links.open { display: flex; }
-    nav.links a { font-size: 16px; color: var(--text); padding: 12px 0; }
+    nav.links a { font-size: 16px; color: #242A31; padding: 12px 0; }
+    nav.links a:hover { color: var(--navy); }
     .mobile-cta { display: inline-flex; margin-top: 12px; padding: 14px 22px; }
   }
   @media (max-width: 560px) {
@@ -548,7 +614,7 @@
     --muted: #6B7280;
     --border: #E4E6EA;
   }
-  section.block.alt { background: #F3F4F6; }
+  section.block.alt { background: #FDFCFA; }
   section.block .eyebrow { color: var(--navy); }
   section.block .section-title,
   section.block .card h3,
@@ -569,7 +635,7 @@
   section.block .step .num { background: var(--navy); color: #FDFCFA; }
   section.block .check { background: var(--navy); }
   section.block .check svg { fill: #FDFCFA; }
-  section.block .img-ph { background-color: #F3F4F6; border-color: var(--border); }
+  section.block .img-ph { background-color: #FDFCFA; border-color: var(--border); }
   section.block .img-ph span { background: #FDFCFA; color: var(--muted); border-color: var(--border); }
 
   /* Lists made semantic (How It Works = <ol>, Why Us = <ul>) keep their
@@ -817,16 +883,6 @@
         <span class="bw"><a class="btn btn-outline" href="#services">See What's Included</a></span>
       </span></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ TRUST BAR ============ -->
-<section class="trust">
-  <div class="wrap trust-inner">
-    <div class="stat"><div class="num">R<span>499</span></div><div class="lbl">Built website + setup</div></div>
-    <div class="stat"><div class="num">R<span>49</span><span style="font-size:0.55em">/mo</span></div><div class="lbl">Hosting, domain &amp; updates</div></div>
-    <div class="stat"><div class="num"><span>2-3</span></div><div class="lbl">Free updates per month</div></div>
-    <div class="stat"><div class="num"><span>100%</span></div><div class="lbl">Fully managed for you</div></div>
   </div>
 </section>
 
