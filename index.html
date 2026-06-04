@@ -113,14 +113,17 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    /* Clean flat white bar with a straight bottom edge */
-    background: #FDFCFA;
+    /* Blue bar matching the hero, with white text/icons */
+    background: linear-gradient(105deg, #001240 0%, #002366 55%, #00396e 100%);
     border-bottom: none;
-    /* Dark text/icons on the white bar */
-    --text: #242A31;
-    --muted: #6B7280;
-    --border: #E4E6EA;
+    --text: #FDFCFA;
+    --muted: rgba(255,255,255,0.82);
+    --border: rgba(255,255,255,0.22);
   }
+  /* White logo + white "Get In Touch" button on the blue bar */
+  header.nav .logo img { filter: brightness(0) invert(1); }
+  header.nav .nav-cta { background: #FDFCFA; color: var(--navy); border-color: #FDFCFA; }
+  header.nav .nav-cta:hover { background: #e9eefb; filter: none; }
   .nav-inner {
     display: flex;
     align-items: center;
@@ -147,7 +150,7 @@
     color: var(--muted);
     transition: color .15s ease;
   }
-  nav.links a:hover { color: var(--navy); }
+  nav.links a:hover { color: #FDFCFA; }
   .nav-cta { margin-left: 10px; padding: 12px 22px; }
   .mobile-cta { display: none; }
 
@@ -167,7 +170,7 @@
     display: block;
     width: 24px; height: 2px;
     margin: 0 auto;
-    background: var(--navy);
+    background: #FDFCFA;
     border-radius: 2px;
     transition: transform .25s ease, opacity .2s ease;
   }
@@ -227,8 +230,8 @@
   /* On the blue hero, flip the buttons so they stay visible */
   .hero .btn-primary { background: #FDFCFA; color: var(--navy); }
   .hero .btn-primary:hover { background: #e9eefb; filter: none; }
-  .hero .btn-outline { background: #00396e; color: #FDFCFA; border-color: #00396e; }
-  .hero .btn-outline:hover { background: #004a8f; border-color: #004a8f; }
+  .hero .btn-outline { background: #262A33; color: #FDFCFA; border-color: #262A33; }
+  .hero .btn-outline:hover { background: #363B45; border-color: #363B45; }
   /* ---------- Trust bar ---------- */
   .trust {
     background: #00396e;
@@ -273,7 +276,7 @@
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.16);
     border-radius: var(--radius);
-    padding: 38px 32px;
+    padding: 52px 36px;
     transition: border-color .18s ease, transform .18s ease;
   }
   .block.alt .card { background: rgba(255,255,255,0.06); }
@@ -565,9 +568,9 @@
   section.block .step h3,
   section.block .why-item h3 { color: #242A31; }
   section.block .card {
-    background: #00396e;
-    border: 1px solid #00396e;
-    border-radius: 16px;
+    background: #262A33;
+    border: 1px solid #262A33;
+    border-radius: 24px;
     color: #FDFCFA;
     --muted: rgba(255,255,255,0.8);
   }
@@ -577,7 +580,7 @@
   section.block .icon-badge { background: transparent; }
   section.block .icon-badge svg { fill: #FDFCFA; }
   section.block .step .num { background: var(--navy); color: #FDFCFA; }
-  section.block .check { background: var(--navy); }
+  section.block .check { background: #262A33; }
   section.block .check svg { fill: #FDFCFA; }
   section.block .img-ph { background-color: #FDFCFA; border-color: var(--border); }
   section.block .img-ph span { background: #FDFCFA; color: var(--muted); border-color: var(--border); }
@@ -604,7 +607,7 @@
   section.block.panel-blue .step h3,
   section.block.panel-blue .why-item h3,
   section.block.panel-blue .faq-item h3 { color: #FDFCFA; }
-  section.block.panel-blue .step .num { background: #FDFCFA; color: var(--navy); }
+  section.block.panel-blue .step .num { background: #262A33; color: #FDFCFA; }
   section.block.panel-blue .about-body a { color: #9DB8FF; }
 
   /* Lists made semantic (How It Works = <ol>, Why Us = <ul>) keep their
