@@ -113,25 +113,31 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    /* White bar: square bottom-left, rounded bottom-right corner */
+    /* White bar with a straight bottom; both corners flow down (see pseudos) */
     background: #FDFCFA;
     border-bottom: none;
-    border-bottom-right-radius: var(--scoop);
     /* Dark text/icons on the white bar */
     --text: #242A31;
     --muted: #6B7280;
     --border: #E4E6EA;
   }
-  /* Left end flows down: a white quarter-circle drops below the straight edge
-     at the bottom-left, curving down into the blue below. */
-  header.nav::after {
+  /* Both bottom corners flow down: white quarter-circles dropping into the
+     blue below, at the left (::after) and right (::before) ends. */
+  header.nav::after,
+  header.nav::before {
     content: "";
     position: absolute;
-    left: 0;
     bottom: calc(var(--scoop) * -1);
     width: var(--scoop);
     height: var(--scoop);
+  }
+  header.nav::after {
+    left: 0;
     background: radial-gradient(circle var(--scoop) at bottom right, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
+  }
+  header.nav::before {
+    right: 0;
+    background: radial-gradient(circle var(--scoop) at bottom left, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
   }
   .nav-inner {
     display: flex;
