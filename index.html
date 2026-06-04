@@ -113,31 +113,13 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    /* White bar with a straight bottom; both corners flow down (see pseudos) */
+    /* Clean flat white bar with a straight bottom edge */
     background: #FDFCFA;
     border-bottom: none;
     /* Dark text/icons on the white bar */
     --text: #242A31;
     --muted: #6B7280;
     --border: #E4E6EA;
-  }
-  /* Both bottom corners flow down: white quarter-circles dropping into the
-     blue below, at the left (::after) and right (::before) ends. */
-  header.nav::after,
-  header.nav::before {
-    content: "";
-    position: absolute;
-    bottom: calc(var(--scoop) * -1);
-    width: var(--scoop);
-    height: var(--scoop);
-  }
-  header.nav::after {
-    left: 0;
-    background: radial-gradient(circle var(--scoop) at bottom right, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
-  }
-  header.nav::before {
-    right: 0;
-    background: radial-gradient(circle var(--scoop) at bottom left, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
   }
   .nav-inner {
     display: flex;
@@ -202,22 +184,6 @@
     text-align: center;
     padding: clamp(110px, 18vh, 200px) 0 clamp(110px, 18vh, 200px);
     position: relative;
-    z-index: 2;
-    /* Straight horizontal bottom edge. The LEFT corner curves up: the rounded
-       bottom-left reveals the white section below, so the line rises at the
-       left edge then runs straight across. */
-    border-bottom-left-radius: 64px;
-  }
-  /* The RIGHT end curves down: a blue quarter-circle drops below the straight
-     edge at the right corner so the line bends down into the white below. */
-  .hero::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: -64px;
-    width: 64px;
-    height: 64px;
-    background: radial-gradient(circle 64px at bottom left, transparent 63px, #00396e 64px);
   }
   .hero.pattern::before {
     content: "";
@@ -293,7 +259,7 @@
   .stat .lbl { font-size: 14px; color: var(--muted); margin-top: 1px; }
 
   /* ---------- Section scaffold ---------- */
-  section.block { padding: clamp(76px, 10vw, 116px) 0; }
+  section.block { padding: calc(clamp(76px, 10vw, 116px) + var(--scoop)) 0; }
   .block.alt { background: var(--bg-alt); }
   .head-center { text-align: center; max-width: 640px; margin: 0 auto clamp(46px, 6vw, 66px); }
 
@@ -405,36 +371,11 @@
 
   /* ---------- CTA banner ---------- */
   .cta {
-    background: #00396e;
+    background: linear-gradient(105deg, #001240 0%, #002366 55%, #00396e 100%);
     color: #FDFCFA;
     text-align: center;
-    position: relative;
-    z-index: 1;
-    /* Rise behind the FAQ above (its bottom draws the CTA's top edge). */
-    margin-top: calc(var(--scoop) * -1);
-    padding: calc(clamp(76px, 10vw, 112px) + var(--scoop)) 0 clamp(76px, 10vw, 112px);
-    /* Bottom edge: each corner points up, revealing the darker footer behind. */
-    border-bottom-left-radius: var(--scoop);
-    border-bottom-right-radius: var(--scoop);
+    padding: calc(clamp(76px, 10vw, 112px) + var(--scoop)) 0;
   }
-  /* Top edge of the CTA below (drawn on the FAQ's bottom): right corner curves
-     up (reveals the dark CTA), left corner flows down -- mirrors the nav bar. */
-  #faq {
-    position: relative;
-    z-index: 2;
-    border-bottom-right-radius: var(--scoop);
-  }
-  #faq::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: calc(var(--scoop) * -1);
-    width: var(--scoop);
-    height: var(--scoop);
-    background: radial-gradient(circle var(--scoop) at bottom right, transparent calc(var(--scoop) - 1px), #FDFCFA var(--scoop));
-  }
-  /* Blue hero curves down into the first light section below it */
-  #services { position: relative; z-index: 1; }
   .cta h2 { font-size: clamp(32px, 4.5vw, 50px); }
   .cta p { color: rgba(255,255,255,0.72); font-size: 19px; margin: 20px auto 38px; max-width: 520px; }
   .cta .btn-primary { padding: 17px 40px; font-size: 17px; background: #FDFCFA; color: var(--navy); }
@@ -442,13 +383,10 @@
 
   /* ---------- Footer ---------- */
   footer.ft {
-    background: #002366;
+    background: #262A33;
     color: rgba(255,255,255,0.72);
-    /* Extra top padding clears the scoop so the content sits below the line. */
     padding: calc(96px + var(--scoop)) 0 0;
     position: relative;
-    /* Rise up behind the CTA's rounded bottom so each corner points up. */
-    margin-top: calc(var(--scoop) * -1);
   }
   .ft-grid {
     display: grid;
@@ -643,6 +581,31 @@
   section.block .check svg { fill: #FDFCFA; }
   section.block .img-ph { background-color: #FDFCFA; border-color: var(--border); }
   section.block .img-ph span { background: #FDFCFA; color: var(--muted); border-color: var(--border); }
+
+  /* ===== Stacked "tab" panels: every section has the same rounded top
+     shoulders and rises over the one above, revealing its colour at the
+     corners. Panels alternate blue / white down the page. ===== */
+  section.block, .cta, footer.ft {
+    position: relative;
+    margin-top: calc(var(--scoop) * -1);
+    border-top-left-radius: var(--scoop);
+    border-top-right-radius: var(--scoop);
+  }
+  /* Blue tab panels (alternate with the white section.block ones) */
+  section.block.panel-blue {
+    background: linear-gradient(105deg, #001240 0%, #002366 55%, #00396e 100%);
+    color: #FDFCFA;
+    --text: #FDFCFA;
+    --muted: rgba(255,255,255,0.8);
+    --border: rgba(255,255,255,0.2);
+  }
+  section.block.panel-blue .eyebrow { color: #9DB8FF; }
+  section.block.panel-blue .section-title,
+  section.block.panel-blue .step h3,
+  section.block.panel-blue .why-item h3,
+  section.block.panel-blue .faq-item h3 { color: #FDFCFA; }
+  section.block.panel-blue .step .num { background: #FDFCFA; color: var(--navy); }
+  section.block.panel-blue .about-body a { color: #9DB8FF; }
 
   /* Lists made semantic (How It Works = <ol>, Why Us = <ul>) keep their
      custom look rather than browser markers. */
@@ -927,7 +890,7 @@
 </section>
 
 <!-- ============ HOW IT WORKS ============ -->
-<section class="block alt" id="how-it-works">
+<section class="block panel-blue" id="how-it-works">
   <div class="wrap">
     <div class="head-center">
       <div class="eyebrow">Process</div>
@@ -984,7 +947,7 @@
 
 
 <!-- ============ ABOUT / E-E-A-T ============ -->
-<section class="block" id="about">
+<section class="block panel-blue" id="about">
   <div class="wrap">
     <div class="about-grid">
       <div>
@@ -1000,7 +963,7 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="block alt" id="faq">
+<section class="block" id="faq">
   <div class="wrap">
     <div class="head-center">
       <div class="eyebrow">FAQ</div>
