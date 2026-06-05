@@ -15,11 +15,14 @@
 <meta property="og:description" content="Affordable managed websites for South African service businesses. R499 to get online, then R49/month for hosting, domain and updates." />
 <meta property="og:url" content="https://sasites.co.za/" />
 <meta property="og:locale" content="en_ZA" />
-<meta property="og:image" content="https://sasites.co.za/assets/logo.png" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://sasites.co.za/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="SA Sites - websites that reflect your business. R499 setup, R49/month." />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SA Sites - Affordable Websites for South African Service Businesses" />
 <meta name="twitter:description" content="Affordable managed websites for South African service businesses. R499 to get online, then R49/month for hosting, domain and updates." />
-<meta name="twitter:image" content="https://sasites.co.za/assets/logo.png" />
+<meta name="twitter:image" content="https://sasites.co.za/assets/og-image.png" />
 
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -199,6 +202,16 @@
     max-width: 600px;
     margin: 24px auto 0;
   }
+  .hero-price {
+    margin: 16px auto 0;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.78);
+  }
+  .hero-price .sep { opacity: 0.4; margin: 0 9px; }
+  /* Sub-line and price build in as one block, so the cursor visits them once. */
+  .hero-lead .bwt { display: block; }
   .hero-actions {
     margin-top: 56px;
     margin-bottom: 24px;
@@ -247,6 +260,8 @@
 
   /* ---------- Section scaffold ---------- */
   section.block { padding: calc(clamp(76px, 10vw, 116px) + var(--scoop)) 0; }
+  /* Pull the Services heading up a touch */
+  #services { padding-top: calc(clamp(52px, 8vw, 88px) + var(--scoop)); }
   .block.alt { background: var(--bg-alt); }
   .head-center { text-align: center; max-width: 640px; margin: 0 auto clamp(46px, 6vw, 66px); }
 
@@ -405,6 +420,8 @@
     font-size: 14px;
     color: rgba(255,255,255,0.5);
   }
+  .ft-bottom a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .ft-bottom a:hover { color: #FDFCFA; text-decoration: underline; }
 
   /* ---------- Animations ---------- */
   /* Subtle attention cues after the build finishes: a soft scale pop on the
@@ -421,53 +438,10 @@
   .pop-soft   { animation: softPop .42s ease; }
   .nudge-soft { animation: softNudge .5s ease; }
 
-  /* "Being built": a cursor visits the logo, then each hero element top to
-     bottom, and renders each one in as it arrives. Driven by JS, which adds
-     .building to <body>. Without JS (or with reduced motion) everything is
-     simply visible. */
+  /* .bwt/.bw are layout wrappers in the hero (centring the lead block and
+     laying out the action buttons). The old "being built" load animation was
+     removed; the hero now renders instantly. */
   .bwt { display: inline-block; }
-  .bw {
-    transition: opacity .32s ease, transform .38s cubic-bezier(.2,.7,.3,1);
-  }
-  body.building .bw {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  body.building .bw.built {
-    opacity: 1;
-    transform: none;
-  }
-  /* Heading is dragged in from the left rather than fading up */
-  .hero-title.bw {
-    transition: opacity .4s ease, transform .55s cubic-bezier(.2,.7,.3,1);
-  }
-  body.building .hero-title.bw {
-    opacity: 0;
-    transform: translateX(-64px);
-  }
-  body.building .hero-title.bw.built {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Fake pointer cursor */
-  .build-cursor {
-    position: fixed;
-    left: 0; top: 0;
-    width: 24px; height: 24px;
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    will-change: transform;
-    transition: transform .26s cubic-bezier(.4,0,.2,1), opacity .2s ease;
-  }
-  .build-cursor.show { opacity: 1; }
-  .build-cursor.done { opacity: 0; }
-  .build-cursor svg {
-    display: block;
-    width: 100%; height: 100%;
-    filter: drop-shadow(0 2px 4px rgba(0,18,64,0.3));
-  }
 
   /* Scroll-triggered fade-up */
   .will-animate {
@@ -483,8 +457,6 @@
   /* Respect reduced-motion preference */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    body.building .bw { opacity: 1; transform: none; }
-    .build-cursor { display: none; }
     .will-animate { transition: none; opacity: 1; transform: none; }
   }
 
@@ -684,9 +656,18 @@
       "image": "https://sasites.co.za/assets/logo.png",
       "description": "SA Sites builds, hosts, and manages affordable websites for South African service businesses for R499 to get online and R49 per month.",
       "email": "tristan@sasites.co.za",
+      "telephone": "+27828934601",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+27828934601",
+        "email": "tristan@sasites.co.za",
+        "areaServed": "ZA",
+        "availableLanguage": "en"
+      },
       "founder": {
         "@type": "Person",
-        "name": "Tristan",
+        "name": "Tristan Boettiger",
         "jobTitle": "Founder",
         "worksFor": { "@id": "https://sasites.co.za/#organization" }
       },
@@ -758,7 +739,7 @@
           "name": "How much does a website from SA Sites cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A website from SA Sites costs R499 once-off to build and set up, then R49 per month, which covers hosting, your domain name, and 2-3 small updates each month."
+            "text": "R499 once-off to build and set up, then R49/month for hosting, your domain, and 2-3 small updates each month."
           }
         },
         {
@@ -766,7 +747,7 @@
           "name": "What is included in the R49 monthly fee?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The R49 monthly fee covers managed hosting, your domain name registration and renewal, and 2-3 small content updates each month, such as changing your hours, prices, or photos."
+            "text": "Managed hosting, your domain registration and renewal, and 2-3 small content updates each month (hours, prices, photos)."
           }
         },
         {
@@ -774,7 +755,7 @@
           "name": "How long does it take to get my website live?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most sites go live within a few days. Once you send your business details, logo, and any photos, we build the site, you review and approve it, and then it goes live."
+            "text": "Usually a few days. You send your details, logo, and photos; we build it, you approve it, and it goes live."
           }
         },
         {
@@ -782,7 +763,7 @@
           "name": "Do I need any technical knowledge to have a website?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. SA Sites handles everything for you, including hosting, your domain, and all updates. You just run your business and email us when you need a change."
+            "text": "No. We handle hosting, your domain, and every update. You just email us when something needs to change."
           }
         },
         {
@@ -790,7 +771,7 @@
           "name": "What types of businesses do you build websites for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We build websites for any local South African service business, including barbers, salons, restaurants, mechanics, doctors, and guesthouses."
+            "text": "Any local South African service business: barbers, salons, restaurants, mechanics, doctors, guesthouses."
           }
         }
       ]
@@ -805,7 +786,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="logo" href="#top">
-      <img src="assets/logo.png" alt="SA Sites logo - affordable websites for South African service businesses">
+      <img src="assets/logo.png" alt="SA Sites logo - affordable websites for South African service businesses" width="498" height="224" decoding="async">
     </a>
     <nav class="links" id="navLinks" aria-label="Primary">
       <a href="#top">Home</a>
@@ -829,8 +810,11 @@
 <section class="hero" id="top">
   <div class="wrap">
     <div class="hero-inner">
-      <h1 class="hero-title bw"><span class="bwt">We Build <span class="hl">Websites</span> for SA Businesses</span></h1>
-      <p class="hero-sub bw"><span class="bwt">We build, host, and manage your website for you.</span></p>
+      <h1 class="hero-title"><span class="bwt">Websites that Reflect <span class="hl" style="white-space:nowrap;">Your Business</span></span></h1>
+      <div class="hero-lead"><span class="bwt">
+        <p class="hero-sub">We build a clean, modern website that accurately reflects what you do. Hosting and updates included.</p>
+        <p class="hero-price">R499 setup<span class="sep">|</span>R49/month</p>
+      </span></div>
       <div class="hero-actions"><span class="bwt">
         <span class="bw"><a class="btn btn-primary" href="#contact">Contact Us</a></span>
         <span class="bw"><a class="btn btn-outline" href="#services">See What's Included</a></span>
@@ -848,21 +832,21 @@
     <div class="cards-3">
       <div class="card">
         <div class="icon-badge is-image">
-          <img src="assets/professional-website.png" alt="Professional service business website built by SA Sites">
+          <img src="assets/professional-website.png" alt="Professional service business website built by SA Sites" width="486" height="513" loading="lazy" decoding="async">
         </div>
         <h3>Professional Website</h3>
         <p>Built with your real business info, logo, and photos. A proper website that represents your business, not a generic template.</p>
       </div>
       <div class="card">
         <div class="icon-badge is-image">
-          <img src="assets/domain-hosting.png" alt="Domain registration and website hosting managed by SA Sites">
+          <img src="assets/domain-hosting.png" alt="Domain registration and website hosting managed by SA Sites" width="505" height="494" loading="lazy" decoding="async">
         </div>
         <h3>Domain &amp; Hosting</h3>
         <p>Your domain name registered and your site hosted, fully managed. You never have to think about servers or renewals again.</p>
       </div>
       <div class="card">
         <div class="icon-badge is-image">
-          <img src="assets/monthly-updates.png" alt="Monthly website content updates included with SA Sites">
+          <img src="assets/monthly-updates.png" alt="Monthly website content updates included with SA Sites" width="505" height="494" loading="lazy" decoding="async">
         </div>
         <h3>Monthly Updates</h3>
         <p>Need to update your hours, add a special offer, or change your menu? We make 2-3 small updates per month at no extra cost.</p>
@@ -906,19 +890,19 @@
     <ul class="why-list why-list-grid">
           <li class="why-item">
             <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
-            <div><h3>No tech knowledge needed</h3><p>We handle everything: hosting, domain, updates. You just run your business.</p></div>
+            <div><h3>No tech knowledge needed</h3><p>You never touch a dashboard or a server. We set it up and keep it running.</p></div>
           </li>
           <li class="why-item">
             <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
-            <div><h3>Priced for local service businesses</h3><p>R499 to get online and R49/month to stay there. No hidden costs, no surprises.</p></div>
+            <div><h3>One simple price</h3><p>R499 to get online, R49/month to stay there. No hidden costs, no surprises.</p></div>
           </li>
           <li class="why-item">
             <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
-            <div><h3>Built for any local business</h3><p>Barbers, salons, restaurants, mechanics, doctors, guesthouses, we've got you covered.</p></div>
+            <div><h3>Made for local businesses</h3><p>Barbers, salons, restaurants, mechanics, doctors, guesthouses. If you serve a local area, this is for you.</p></div>
           </li>
           <li class="why-item">
             <span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>
-            <div><h3>Ongoing support every month</h3><p>2-3 updates included every month so your site always reflects your business accurately.</p></div>
+            <div><h3>Updates handled for you</h3><p>2-3 changes a month included, so your site stays accurate as your business changes.</p></div>
           </li>
     </ul>
   </div>
@@ -949,23 +933,23 @@
     <div class="faq-list">
       <article class="faq-item">
         <h3>How much does a website from SA Sites cost?</h3>
-        <p>A website from SA Sites costs R499 once-off to build and set up, then R49 per month, which covers hosting, your domain name, and 2-3 small updates each month.</p>
+        <p>R499 once-off to build and set up, then R49/month for hosting, your domain, and 2-3 small updates each month.</p>
       </article>
       <article class="faq-item">
         <h3>What is included in the R49 monthly fee?</h3>
-        <p>The R49 monthly fee covers managed hosting, your domain name registration and renewal, and 2-3 small content updates each month, such as changing your hours, prices, or photos.</p>
+        <p>Managed hosting, your domain registration and renewal, and 2-3 small content updates each month (hours, prices, photos).</p>
       </article>
       <article class="faq-item">
         <h3>How long does it take to get my website live?</h3>
-        <p>Most sites go live within a few days. Once you send your business details, logo, and any photos, we build the site, you review and approve it, and then it goes live.</p>
+        <p>Usually a few days. You send your details, logo, and photos; we build it, you approve it, and it goes live.</p>
       </article>
       <article class="faq-item">
         <h3>Do I need any technical knowledge to have a website?</h3>
-        <p>No. SA Sites handles everything for you, including hosting, your domain, and all updates. You just run your business and email us when you need a change.</p>
+        <p>No. We handle hosting, your domain, and every update. You just email us when something needs to change.</p>
       </article>
       <article class="faq-item">
         <h3>What types of businesses do you build websites for?</h3>
-        <p>We build websites for any local South African service business, including barbers, salons, restaurants, mechanics, doctors, and guesthouses.</p>
+        <p>Any local South African service business: barbers, salons, restaurants, mechanics, doctors, guesthouses.</p>
       </article>
     </div>
   </div>
@@ -1008,7 +992,7 @@
       <button type="submit" class="btn btn-primary cf-submit">Send Enquiry</button>
       <p class="cf-status" role="status" aria-live="polite"></p>
     </form>
-    <p class="cf-alt">Prefer email? <a href="mailto:tristan@sasites.co.za">tristan@sasites.co.za</a></p>
+    <p class="cf-alt">Prefer to reach us directly? <a href="https://wa.me/27828934601" target="_blank" rel="noopener">WhatsApp us</a> or email <a href="mailto:tristan@sasites.co.za">tristan@sasites.co.za</a></p>
   </div>
 </section>
 
@@ -1019,7 +1003,7 @@
   <div class="wrap">
     <div class="ft-grid">
       <div>
-        <a class="logo" href="#top"><img src="assets/logo.png" alt="SA Sites logo - affordable websites for South African service businesses"></a>
+        <a class="logo" href="#top"><img src="assets/logo.png" alt="SA Sites logo - affordable websites for South African service businesses" width="498" height="224" loading="lazy" decoding="async"></a>
         <p class="ft-desc">Affordable, fully managed websites for South African service businesses. We handle everything so you can focus on what you do best.</p>
       </div>
       <div class="ft-col">
@@ -1037,11 +1021,11 @@
       <div class="ft-col ft-contact">
         <h4>Contact</h4>
         <div><strong>Location</strong><br/>South Africa</div>
-        <div><strong>WhatsApp</strong> &nbsp;TBC</div>
+        <div><strong>WhatsApp</strong> &nbsp;<a href="https://wa.me/27828934601" target="_blank" rel="noopener">082 893 4601</a></div>
         <div><strong>Email</strong> &nbsp;<a href="mailto:tristan@sasites.co.za">tristan@sasites.co.za</a></div>
       </div>
     </div>
-    <div class="ft-bottom">© 2026 SA Sites. All rights reserved.</div>
+    <div class="ft-bottom">© 2026 SA Sites. All rights reserved. &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></div>
   </div>
 </footer>
 
@@ -1060,102 +1044,24 @@ document.addEventListener('DOMContentLoaded', () => {
   menuToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-  /* ── "Being built" sequence ──
-     A cursor appears at the heading, then the sub-line and each button,
-     rendering them in one after another. */
-  (function heroBuild() {
-    const heroEls = Array.from(document.querySelectorAll('.hero-inner .bw'));
-    if (!heroEls.length) return;
-
+  /* ── CTA nudge ──
+     The hero renders instantly (the old "being built" load animation was
+     removed). Shortly after load, nudge the primary "Contact Us" button once
+     so the eye lands on it. The stat bars pop separately, when the trust bar
+     scrolls into view (see statPop). */
+  (function ctaNudge() {
     const reduce = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return; // everything is visible by default
+    if (reduce) return;
 
-    document.body.classList.add('building'); // hide hero elements
+    const cta = document.querySelector('.hero-actions .btn-primary');
+    if (!cta) return;
 
-    // Touch devices have no pointer, so skip the fake cursor; the elements
-    // still build in one after another.
-    const noCursor = !!(window.matchMedia &&
-      window.matchMedia('(hover: none), (pointer: coarse)').matches);
-    let cursor = null;
-    if (!noCursor) {
-      cursor = document.createElement('div');
-      cursor.className = 'build-cursor';
-      cursor.innerHTML =
-        '<svg viewBox="0 0 24 24" fill="#FDFCFA" stroke="#002366" stroke-width="1.4" stroke-linejoin="round">' +
-        '<path d="M5 2.5l13.5 7.8-5.7 1.5-1.6 5.6L5 2.5z"/></svg>';
-      document.body.appendChild(cursor);
-    }
-
-    // viewport coordinates, since the cursor is position:fixed
-    const rectOf = (el) => {
-      const t = el.querySelector('.bwt') || el;
-      const r = t.getBoundingClientRect();
-      return { x: r.left, y: r.top, w: r.width, h: r.height };
-    };
-
-    // safety net: never leave anything hidden
-    const safety = setTimeout(() => {
-      heroEls.forEach(e => e.classList.add('built'));
-      if (cursor) cursor.remove();
-    }, 7000);
-
-    const bounce = (el, cls) => {
-      if (!el) return;
-      cls = cls || 'pop-soft';
-      el.classList.remove(cls);
-      void el.offsetWidth; // restart the animation if re-applied
-      el.classList.add(cls);
-    };
-
-    const finish = () => {
-      clearTimeout(safety);
-      if (cursor) {
-        cursor.classList.add('done');
-        setTimeout(() => { cursor.remove(); }, 450);
-      }
-
-      // Nudge the primary CTA once the hero finishes building. The stat bars
-      // pop separately, when the trust bar scrolls into view (see statPop).
-      const cta = document.querySelector('.hero-actions .btn-primary');
-      setTimeout(() => bounce(cta, 'nudge-soft'), 360);
-    };
-
-    const step = (i) => {
-      if (i >= heroEls.length) { finish(); return; }
-      const el = heroEls[i];
-      const r = rectOf(el);
-      const cx = (r.x + r.w / 2 - 5);
-      const cy = (r.y + r.h / 2 - 2);
-
-      if (i === 0) {
-        // Heading: cursor and title appear together at the left, then both
-        // travel right in sync, so the cursor looks like it drags the title in.
-        if (cursor) {
-          cursor.style.transition = 'none';
-          cursor.style.transform = 'translate(' + (r.x - 30) + 'px,' + cy + 'px)';
-          void cursor.offsetWidth;
-          cursor.style.transition = '';
-        }
-        requestAnimationFrame(() => {
-          if (cursor) {
-            cursor.classList.add('show');        // cursor fades in...
-            cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
-          }
-          el.classList.add('built');             // ...as the title slides in
-        });
-        setTimeout(() => step(i + 1), 560);
-        return;
-      }
-
-      if (cursor) cursor.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
-      setTimeout(() => {
-        el.classList.add('built'); // render the real element
-        setTimeout(() => step(i + 1), 150);
-      }, 250);
-    };
-
-    setTimeout(() => step(0), 300);
+    setTimeout(() => {
+      cta.classList.remove('nudge-soft');
+      void cta.offsetWidth; // restart the animation if re-applied
+      cta.classList.add('nudge-soft');
+    }, 900);
   })();
 
   /* ── Stat-bar celebration ──
@@ -1185,8 +1091,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Scroll fade-up ── */
   const animEls = document.querySelectorAll(
-    '.trust .stat, .card, .step, .why-item, ' +
-    '.head-center, .cta h2, .cta p, .cta .btn-primary, .ft-grid > div'
+    '.trust .stat, .card, .step, .why-item, .faq-item, .about-body, ' +
+    '.cta p, .cta .btn-primary, .ft-grid > div'
   );
 
   /* Only hide-then-reveal when the browser supports IntersectionObserver.
@@ -1195,7 +1101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animEls.forEach(el => el.classList.add('will-animate'));
 
     /* Stagger children within their grid containers */
-    ['.trust-inner', '.cards-3', '.steps', '.why-list', '.ft-grid'].forEach(sel => {
+    ['.trust-inner', '.cards-3', '.steps', '.why-list', '.faq-list', '.ft-grid'].forEach(sel => {
       document.querySelectorAll(sel).forEach(container => {
         Array.from(container.children).forEach((child, idx) => {
           if (child.classList.contains('will-animate')) {
