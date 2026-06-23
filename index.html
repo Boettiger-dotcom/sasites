@@ -28,20 +28,21 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
 <style>
-  /* Self-hosted display font for headings only (no third-party request) */
+  /* Self-hosted display font for headings only (no third-party request).
+     One variable-font file covers both weights below. */
   @font-face {
-    font-family: 'Manrope';
+    font-family: 'Fraunces';
     font-weight: 600;
     font-style: normal;
     font-display: swap;
-    src: url('assets/manrope-latin-600-normal.woff2') format('woff2');
+    src: url('assets/fraunces-latin-var.woff2') format('woff2');
   }
   @font-face {
-    font-family: 'Manrope';
+    font-family: 'Fraunces';
     font-weight: 700;
     font-style: normal;
     font-display: swap;
-    src: url('assets/manrope-latin-700-normal.woff2') format('woff2');
+    src: url('assets/fraunces-latin-var.woff2') format('woff2');
   }
 
   :root {
@@ -52,7 +53,7 @@
     --border: rgba(255,255,255,0.18);
     --radius: 8px;
     --font: "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
-    --font-head: "Manrope", "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
+    --font-head: "Fraunces", "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
     --maxw: 1180px;
     --scoop: 56px;
   }
@@ -227,7 +228,6 @@
     letter-spacing: 0.04em;
     color: rgba(255,255,255,0.78);
   }
-  .hero-price .sep { opacity: 0.4; margin: 0 9px; }
   /* Sub-line and price build in as one block, so the cursor visits them once. */
   .hero-lead .bwt { display: block; }
   .hero-actions {
@@ -818,8 +818,8 @@
     <div class="hero-inner">
       <h1 class="hero-title"><span class="bwt">Websites that Reflect <span class="hl" style="white-space:nowrap;">Your Business</span></span></h1>
       <div class="hero-lead"><span class="bwt">
-        <p class="hero-sub">A professional website, fully looked after - so you never have to think about it again.</p>
-        <p class="hero-price">R99 once-off to build it<span class="sep">|</span>R99/month to keep it running</p>
+        <p class="hero-sub">A professional website, fully looked after.</p>
+        <p class="hero-price">Only R99/month</p>
       </span></div>
       <div class="hero-actions"><span class="bwt">
         <span class="bw"><a class="btn btn-primary" href="#contact">Contact Us</a></span>
