@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SA Sites - Fully Managed Websites for South African Service Businesses</title>
-<meta name="description" content="Professional, fully managed websites for South African service businesses. R799 to launch, then R99/month - hosting, domain and updates handled for you." />
+<meta name="description" content="Professional, fully managed websites for South African service businesses. R99 once-off to build it, then R99/month to keep it running - hosting, domain and updates handled for you." />
 <link rel="canonical" href="https://sasites.co.za/" />
 <meta name="robots" content="index, follow" />
 
@@ -12,22 +12,38 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SA Sites" />
 <meta property="og:title" content="SA Sites - Fully Managed Websites for South African Service Businesses" />
-<meta property="og:description" content="Professional, fully managed websites for South African service businesses. R799 to launch, then R99/month - hosting, domain and updates handled for you." />
+<meta property="og:description" content="Professional, fully managed websites for South African service businesses. R99 once-off to build it, then R99/month to keep it running - hosting, domain and updates handled for you." />
 <meta property="og:url" content="https://sasites.co.za/" />
 <meta property="og:locale" content="en_ZA" />
 <meta property="og:image" content="https://sasites.co.za/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="SA Sites - websites that reflect your business. R799 setup, R99/month." />
+<meta property="og:image:alt" content="SA Sites - websites that reflect your business. R99 once-off, R99/month." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SA Sites - Fully Managed Websites for South African Service Businesses" />
-<meta name="twitter:description" content="Professional, fully managed websites for South African service businesses. R799 to launch, then R99/month - hosting, domain and updates handled for you." />
+<meta name="twitter:description" content="Professional, fully managed websites for South African service businesses. R99 once-off to build it, then R99/month to keep it running - hosting, domain and updates handled for you." />
 <meta name="twitter:image" content="https://sasites.co.za/assets/og-image.png" />
 
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
 <style>
+  /* Self-hosted display font for headings only (no third-party request) */
+  @font-face {
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('assets/manrope-latin-600-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Manrope';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('assets/manrope-latin-700-normal.woff2') format('woff2');
+  }
+
   :root {
     --navy: #002366;
     --bg: transparent;
@@ -36,6 +52,7 @@
     --border: rgba(255,255,255,0.18);
     --radius: 8px;
     --font: "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
+    --font-head: "Manrope", "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
     --maxw: 1180px;
     --scoop: 56px;
   }
@@ -63,7 +80,7 @@
     background: linear-gradient(to right, #001240 0%, #002366 55%, #00396e 100%);
   }
 
-  h1, h2, h3 { line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; }
+  h1, h2, h3 { font-family: var(--font-head); line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; }
 
   a { color: inherit; text-decoration: none; }
 
@@ -100,12 +117,12 @@
     border-radius: 999px;
     border: 1.5px solid transparent;
     cursor: pointer;
-    transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+    transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
   }
   .btn-primary { background: #00396e; color: #FDFCFA; }
-  .btn-primary:hover { filter: brightness(1.15); }
+  .btn-primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
   .btn-outline { background: transparent; color: var(--navy); border-color: var(--border); }
-  .btn-outline:hover { border-color: var(--navy); }
+  .btn-outline:hover { border-color: var(--navy); transform: translateY(-1px); }
 
   /* ---------- Navigation ---------- */
   header.nav {
@@ -133,6 +150,7 @@
     display: flex;
     align-items: center;
     gap: 11px;
+    font-family: var(--font-head);
     font-weight: 700;
     font-size: 19px;
     letter-spacing: -0.01em;
@@ -625,7 +643,7 @@
         "url": "https://sasites.co.za/assets/logo.png"
       },
       "image": "https://sasites.co.za/assets/logo.png",
-      "description": "SA Sites builds, hosts, and manages affordable websites for South African service businesses for R799 to get online and R99 per month.",
+      "description": "SA Sites builds, hosts, and manages affordable websites for South African service businesses for R99 once-off to build it and R99 per month to keep it running.",
       "email": "tristan@sasites.co.za",
       "telephone": "+27828934601",
       "contactPoint": {
@@ -657,7 +675,7 @@
       "@id": "https://sasites.co.za/#service",
       "name": "SA Sites - managed websites for service businesses",
       "url": "https://sasites.co.za/",
-      "description": "A done-for-you website service for South African service businesses: R799 once-off to build and launch, then R99 per month to keep it online, secure, current, and found. Hosting, security, domain renewal, and changes are all handled.",
+      "description": "A done-for-you website service for South African service businesses: R99 once-off to build your site, then R99 per month to keep it online, secure, current, and found. Hosting, security, domain renewal, and changes are all handled.",
       "provider": { "@id": "https://sasites.co.za/#organization" },
       "areaServed": {
         "@type": "Country",
@@ -703,7 +721,7 @@
           "name": "How much does a website from SA Sites cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "R799 once-off to build and launch, then R99/month for hosting, security, your domain, and small changes whenever you need them. No hidden fees."
+            "text": "R99 once-off to build your site, then R99/month for hosting, security, your domain, and small changes whenever you need them. No hidden fees."
           }
         },
         {
@@ -801,7 +819,7 @@
       <h1 class="hero-title"><span class="bwt">Websites that Reflect <span class="hl" style="white-space:nowrap;">Your Business</span></span></h1>
       <div class="hero-lead"><span class="bwt">
         <p class="hero-sub">A professional website, fully looked after - so you never have to think about it again.</p>
-        <p class="hero-price">R799 to launch<span class="sep">|</span>R99/month, fully managed</p>
+        <p class="hero-price">R99 once-off to build it<span class="sep">|</span>R99/month to keep it running</p>
       </span></div>
       <div class="hero-actions"><span class="bwt">
         <span class="bw"><a class="btn btn-primary" href="#contact">Contact Us</a></span>
@@ -826,7 +844,7 @@
           </picture>
         </div>
         <h3>Professional Website</h3>
-        <p>Built around your business - your info, logo, and photos.</p>
+        <p>Custom coded around your business - no templates, no page builders.</p>
       </div>
       <div class="card">
         <div class="icon-badge is-image">
@@ -872,7 +890,7 @@
       <li class="step">
         <div class="num">3</div>
         <h3>Pay &amp; Go Live</h3>
-        <p>Pay the R799 setup fee and your site goes live. R99/month keeps everything running smoothly.</p>
+        <p>Pay R99 once and your site goes live. R99/month keeps everything running smoothly.</p>
       </li>
     </ol>
   </div>
@@ -888,11 +906,11 @@
       <div class="pricing-card">
         <h3 class="price-name">Website Build</h3>
         <div class="price-row">
-          <span class="price-amt">R799</span>
+          <span class="price-amt">R99</span>
           <span class="price-meta">once-off<br>to build &amp; launch</span>
         </div>
         <ul class="price-incl">
-          <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Professional website built around your business</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Custom coded - no templates or page builders</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Your real info, logo, and photos</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Live in 2-3 days</li>
         </ul>
@@ -905,7 +923,7 @@
           <span class="price-meta">per month<br>cancel anytime</span>
         </div>
         <ul class="price-incl">
-          <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Hosting, security and uptime</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Hosted on Cloudflare's global network</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Your domain registered and renewed every year</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Small changes whenever you need them</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>If anything breaks, we fix it at no extra cost</li>
@@ -915,7 +933,7 @@
     </div>
     <div class="pricing-cta-wrap">
       <a class="btn btn-primary price-cta" href="#contact">Get Started</a>
-      <p class="price-note">R799 to launch, then R99/month. No commitment, cancel anytime.</p>
+      <p class="price-note">R99 once-off to build it, then R99/month to keep it running. No commitment, cancel anytime.</p>
     </div>
   </div>
 </section>
@@ -929,7 +947,7 @@
     <div class="faq-list">
       <article class="faq-item">
         <h3>How much does a website from SA Sites cost?</h3>
-        <p>R799 once-off to build and launch your site. After that, R99/month covers everything - hosting, your domain, uptime monitoring, and small content updates. No hidden fees.</p>
+        <p>R99 once-off to build your site. After that, R99/month keeps it running - hosting, your domain, uptime monitoring, and small content updates. No hidden fees.</p>
       </article>
       <article class="faq-item">
         <h3>What is included in the R99 monthly fee?</h3>
