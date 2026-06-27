@@ -484,13 +484,13 @@
     border-radius: 24px;
     color: #FDFCFA;
     --muted: rgba(255,255,255,0.8);
-    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
   }
   section.block .card h3 { color: #FDFCFA; }
   section.block .card:hover {
     border-color: rgba(255,255,255,0.45);
     transform: translateY(-4px);
     box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
   }
   section.block .icon-badge { background: transparent; }
   section.block .icon-badge svg { fill: #FDFCFA; }
@@ -556,7 +556,7 @@
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.14);
     border-radius: 14px;
-    transition: border-color .18s ease, background .18s ease;
+    transition: opacity .6s ease, transform .6s ease, border-color .18s ease, background .18s ease;
   }
   .faq-item:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); }
   .faq-item h3 { font-size: 19px; margin-bottom: 10px; }
