@@ -85,6 +85,18 @@
 
   a { color: inherit; text-decoration: none; }
 
+  /* Keyboard focus rings - shown for keyboard nav, suppressed for mouse clicks */
+  :focus { outline: none; }
+  .btn:focus-visible,
+  .menu-toggle:focus-visible,
+  nav.links a:focus-visible,
+  .logo:focus-visible,
+  .ft-col a:focus-visible,
+  .ft-bottom a:focus-visible {
+    outline: 2px solid #9DB8FF;
+    outline-offset: 3px;
+  }
+
   /* Skip-to-content link: hidden until focused by keyboard */
   .skip-link {
     position: absolute;
@@ -206,10 +218,19 @@
     padding: clamp(110px, 18vh, 200px) 0 clamp(110px, 18vh, 200px);
     position: relative;
   }
+  /* Soft radial glow behind the hero content for depth (no image) */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(58% 46% at 50% 36%, rgba(110,155,240,0.20) 0%, rgba(110,155,240,0) 70%);
+  }
   .hero-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
   .hero-title { font-size: clamp(40px, 6.5vw, 70px); letter-spacing: -0.03em; color: #FDFCFA; }
   .hero-title .hl {
-    background: linear-gradient(100deg, #AFC6FF 0%, #6E9BF0 100%);
+    background: linear-gradient(100deg, #C2D6FF 0%, #7BA6F4 55%, #5E8FE8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -222,19 +243,25 @@
     margin: 24px auto 0;
   }
   .hero-price {
-    margin: 16px auto 0;
+    margin: 18px auto 0;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 999px;
+    padding: 6px 16px;
     font-family: var(--font-head);
-    font-size: clamp(22px, 2.6vw, 28px);
+    font-size: clamp(15px, 1.7vw, 18px);
     font-weight: 700;
     letter-spacing: -0.01em;
     color: #FDFCFA;
   }
-  .hero-price .sep { opacity: 0.4; margin: 0 9px; }
+  .hero-price .sep { color: rgba(255,255,255,0.35); font-weight: 300; margin: 0 10px; }
   /* Sub-line and price build in as one block, so the cursor visits them once. */
   .hero-lead .bwt { display: block; }
   .hero-actions {
-    margin-top: 56px;
-    margin-bottom: 24px;
+    margin-top: 52px;
+    margin-bottom: 0;
     text-align: center;
   }
   .hero-actions .bwt {
@@ -247,8 +274,8 @@
   /* On the blue hero, flip the buttons so they stay visible */
   .hero .btn-primary { background: #FDFCFA; color: var(--navy); }
   .hero .btn-primary:hover { background: #e9eefb; filter: none; }
-  .hero .btn-outline { background: #262A33; color: #FDFCFA; border-color: #262A33; }
-  .hero .btn-outline:hover { background: #363B45; border-color: #363B45; }
+  .hero .btn-outline { background: rgba(255,255,255,0.06); color: #FDFCFA; border-color: rgba(255,255,255,0.42); }
+  .hero .btn-outline:hover { background: rgba(255,255,255,0.14); border-color: #FDFCFA; }
   /* ---------- Section scaffold ---------- */
   section.block { padding: calc(clamp(76px, 10vw, 116px) + var(--scoop)) 0; }
   /* Pull the Services heading up a touch */
@@ -298,7 +325,7 @@
     left: 16%;
     right: 16%;
     height: 2px;
-    background: var(--border);
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, var(--border) 18%, var(--border) 82%, rgba(255,255,255,0) 100%);
     z-index: 0;
   }
   .step { text-align: center; position: relative; z-index: 1; padding: 0 12px; }
@@ -314,24 +341,11 @@
     justify-content: center;
     margin: 0 auto 22px;
     border: 4px solid transparent;
+    transition: transform .2s ease;
   }
   .step h3 { font-size: 19px; margin-bottom: 10px; }
   .step p { color: var(--muted); font-size: 16px; max-width: 280px; margin: 0 auto; }
-
-  /* ---------- Why us ---------- */
-  .why-list { display: flex; flex-direction: column; gap: 26px; }
-  .why-item { display: flex; gap: 16px; align-items: flex-start; }
-  .check {
-    flex: none;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    background: #FDFCFA;
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 2px;
-  }
-  .check svg { width: 16px; height: 16px; fill: var(--navy); }
-  .why-item h3 { font-size: 18px; margin-bottom: 4px; }
-  .why-item p { color: var(--muted); font-size: 15.5px; }
+  .step:hover .num { transform: translateY(-2px); }
 
   /* ---------- CTA banner ---------- */
   .cta {
@@ -347,7 +361,7 @@
 
   /* ---------- Footer ---------- */
   footer.ft {
-    background: #262A33;
+    background: #13294B;
     color: rgba(255,255,255,0.72);
     padding: calc(96px + var(--scoop)) 0 0;
     position: relative;
@@ -463,22 +477,24 @@
   }
   section.block .section-title,
   section.block .card h3,
-  section.block .step h3,
-  section.block .why-item h3 { color: #242A31; }
+  section.block .step h3 { color: #242A31; }
   section.block .card {
-    background: #262A33;
-    border: 1px solid #262A33;
+    background: #13294B;
+    border: 1px solid #13294B;
     border-radius: 24px;
     color: #FDFCFA;
     --muted: rgba(255,255,255,0.8);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
   }
   section.block .card h3 { color: #FDFCFA; }
-  section.block .card:hover { border-color: rgba(255,255,255,0.45); }
+  section.block .card:hover {
+    border-color: rgba(255,255,255,0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+  }
   section.block .icon-badge { background: transparent; }
   section.block .icon-badge svg { fill: #FDFCFA; }
   section.block .step .num { background: var(--navy); color: #FDFCFA; }
-  section.block .check { background: #262A33; }
-  section.block .check svg { fill: #FDFCFA; }
 
   /* ===== Stacked "tab" panels: every section has the same rounded top
      shoulders and rises over the one above, revealing its colour at the
@@ -488,6 +504,7 @@
     margin-top: calc(var(--scoop) * -1);
     border-top-left-radius: var(--scoop);
     border-top-right-radius: var(--scoop);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.04);
   }
   /* Blue tab panels (alternate with the white section.block ones) */
   section.block.panel-blue {
@@ -499,37 +516,50 @@
   }
   section.block.panel-blue .section-title,
   section.block.panel-blue .step h3,
-  section.block.panel-blue .why-item h3,
   section.block.panel-blue .faq-item h3 { color: #FDFCFA; }
-  section.block.panel-blue .step .num { background: #262A33; color: #FDFCFA; }
+  section.block.panel-blue .step .num {
+    background: #FDFCFA;
+    color: var(--navy);
+    border: 2px solid rgba(0,35,102,0.12);
+  }
   section.block.panel-blue .about-body a:not(.btn) { color: #9DB8FF; }
 
-  /* Lists made semantic (How It Works = <ol>, Why Us = <ul>) keep their
-     custom look rather than browser markers. */
-  ol.steps, ul.why-list { list-style: none; }
-
-  /* Why-Us benefits stacked one under another, centered (no image) */
-  .why-list-grid {
-    max-width: 620px;
-    margin: 0 auto;
-  }
+  /* How It Works is an ordered list but keeps its custom look. */
+  ol.steps { list-style: none; }
 
   /* ---------- About ---------- */
   .about-body p { color: var(--muted); font-size: 17px; }
   .about-body p + p { margin-top: 18px; }
   .about-body-center { max-width: 640px; margin: 0 auto; text-align: center; }
   section.block .about-body a:not(.btn) { color: var(--navy); font-weight: 600; text-decoration: underline; }
+  .about-monogram {
+    width: 84px; height: 84px;
+    margin: 0 auto 26px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: linear-gradient(180deg, #00396e 0%, #002366 100%);
+    color: #FDFCFA;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 24px rgba(0,35,102,0.18);
+  }
 
   /* ---------- FAQ ---------- */
-  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
   .faq-item {
-    padding: 26px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 24px 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    transition: border-color .18s ease, background .18s ease;
   }
-  .faq-item:first-child { padding-top: 0; }
-  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-item:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); }
   .faq-item h3 { font-size: 19px; margin-bottom: 10px; }
-  section.block .faq-item h3 { color: #242A31; }
   .faq-item p { color: var(--muted); font-size: 16.5px; }
 
   /* ---------- Pricing ---------- */
@@ -545,22 +575,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
-    font-weight: 300;
-    color: #9AA1AD;
+    align-self: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.04);
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
     line-height: 1;
   }
   .pricing-card {
-    background: #262A33;
-    border: 1px solid #262A33;
+    background: #13294B;
+    border: 1px solid #13294B;
     border-radius: 24px;
     color: #FDFCFA;
     --muted: rgba(255,255,255,0.8);
     padding: clamp(32px, 3.5vw, 44px);
     display: flex;
     flex-direction: column;
+    transition: border-color .2s ease, transform .2s ease;
   }
+  .pricing-card:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-3px); }
+  .pricing-card-featured { border-color: rgba(255,255,255,0.35); }
   .price-name { font-size: 20px; font-weight: 600; color: #FDFCFA; margin-bottom: 22px; }
+  .price-tag {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #FDFCFA;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 999px;
+    vertical-align: middle;
+  }
   .price-row { display: flex; align-items: center; gap: 12px; }
   .price-amt { font-size: clamp(40px, 5vw, 52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
   .price-meta { font-size: 13px; line-height: 1.35; color: rgba(255,255,255,0.7); }
@@ -588,11 +641,19 @@
 
   @media (max-width: 720px) {
     .pricing-grid { grid-template-columns: 1fr; max-width: 480px; gap: 14px; }
-    .price-plus { font-size: 28px; }
+    .price-plus { display: none; }
   }
 
   /* ---------- Contact form ---------- */
-  .contact-form { max-width: 620px; margin: 38px auto 0; text-align: left; }
+  .contact-form {
+    max-width: 620px;
+    margin: 38px auto 0;
+    text-align: left;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 18px;
+    padding: 30px 32px 34px;
+  }
   .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .cf-field { display: block; margin-bottom: 16px; }
   .cf-field > span { display: block; font-size: 14px; font-weight: 600; color: #FDFCFA; margin-bottom: 7px; }
@@ -739,7 +800,7 @@
           "name": "What counts as a small change?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Text updates, new photos, changed hours, updated contact details - anything that keeps your existing site current. Full rebuilds or large additions like new pages are quoted separately at R499."
+            "text": "Text updates, new photos, changed hours, updated contact details - anything that keeps your existing site current. Full rebuilds or large additions like new pages are quoted separately."
           }
         },
         {
@@ -918,8 +979,8 @@
         </ul>
       </div>
       <div class="price-plus" aria-hidden="true">+</div>
-      <div class="pricing-card">
-        <h3 class="price-name">Fully Managed</h3>
+      <div class="pricing-card pricing-card-featured">
+        <h3 class="price-name">Fully Managed <span class="price-tag">Ongoing</span></h3>
         <div class="price-row">
           <span class="price-amt">R49</span>
           <span class="price-meta">per month<br>cancel anytime</span>
@@ -929,7 +990,7 @@
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Your domain registered and renewed every year</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Small changes whenever you need them</li>
           <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>If anything breaks, we fix it at no extra cost</li>
-          <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Your site kept fast and set up to be found on Google</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg></span>Your site kept fast and looking sharp on every device</li>
         </ul>
       </div>
     </div>
@@ -957,7 +1018,7 @@
       </article>
       <article class="faq-item">
         <h3>What counts as a small change?</h3>
-        <p>Text updates, new photos, changed hours, updated contact details - anything that keeps your existing site current. Full rebuilds or large additions like new pages are quoted separately at R499.</p>
+        <p>Text updates, new photos, changed hours, updated contact details - anything that keeps your existing site current. Full rebuilds or large additions like new pages are quoted separately.</p>
       </article>
       <article class="faq-item">
         <h3>It's already built - why do I pay every month?</h3>
@@ -990,6 +1051,7 @@
       <h2 class="section-title">Who's Behind SA Sites</h2>
     </div>
     <div class="about-body about-body-center">
+      <div class="about-monogram" aria-hidden="true">TB</div>
       <p>We build websites that get results for the service business industry, run hands-on by founder Tristan Boettiger.</p>
       <div style="margin-top:28px;"><a class="btn btn-primary" href="#contact">Let's Get Started</a></div>
     </div>
@@ -1104,7 +1166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Scroll fade-up ── */
   const animEls = document.querySelectorAll(
-    '.card, .step, .why-item, .faq-item, .about-body, ' +
+    '.card, .step, .faq-item, .about-body, ' +
     '.cta p, .cta .btn-primary, .ft-grid > div'
   );
 
@@ -1114,7 +1176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animEls.forEach(el => el.classList.add('will-animate'));
 
     /* Stagger children within their grid containers */
-    ['.cards-3', '.steps', '.why-list', '.faq-list', '.ft-grid'].forEach(sel => {
+    ['.cards-3', '.steps', '.faq-list', '.ft-grid'].forEach(sel => {
       document.querySelectorAll(sel).forEach(container => {
         Array.from(container.children).forEach((child, idx) => {
           if (child.classList.contains('will-animate')) {
